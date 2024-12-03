@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "gencer.html-slim-scss-css-class-completion",
+    "jemmyw.rails-fast-nav",
+    "kaiwood.endwise",
+    "koichisasada.vscode-rdbg",
+    "mhutchie.git-graph",
+    "shopify.ruby-lsp",
+  ]
+}
