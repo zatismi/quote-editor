@@ -1,3 +1,55 @@
+// Dark Mode
+:root {
+  // Simple fonts
+  --font-family-sans: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  // Classical line heights
+  --line-height-headers: 1.1;
+  --line-height-body:    1.5;
+
+  // Classical and robust font sizes system
+  --font-size-xs: 0.75rem;   // 12px
+  --font-size-s: 0.875rem;   // 14px
+  --font-size-m: 1rem;       // 16px
+  --font-size-l: 1.125rem;   // 18px
+  --font-size-xl: 1.25rem;   // 20px
+  --font-size-xxl: 1.5rem;   // 24px
+  --font-size-xxxl: 2rem;    // 32px
+  --font-size-xxxxl: 2.5rem; // 40px
+
+  // Three different text colors
+  --color-text-header: hsl(0, 0%, 92%);
+  --color-text-body:   hsl(0, 0%, 80%);
+  --color-text-muted:  hsl(0, 0%, 60%);
+
+  // Application colors
+  --color-primary:          hsl(350, 67%, 60%);
+  --color-primary-rotate:   hsl(10, 73%, 65%);
+  --color-primary-bg:       hsl(0, 20%, 25%);
+  --color-secondary:        hsl(101, 45%, 50%);
+  --color-secondary-rotate: hsl(120, 45%, 50%);
+  --color-tertiary:         hsl(49, 89%, 50%);
+  --color-glint:            hsl(210, 90%, 70%);
+
+  // Neutral colors
+  --color-white:      hsl(0, 0%, 10%);
+  --color-background: hsl(240, 5%, 10%);
+  --color-light:      hsl(0, 0%, 20%);
+  --color-dark:       var(--color-text-header);
+
+  // Border radius
+  --border-radius: 0.375rem;
+
+  // Border
+  --border: solid 2px var(--color-light);
+
+  // Shadows
+  --shadow-large:  2px 4px 10px hsl(0 0% 0% / 0.3);
+  --shadow-small:  1px 3px 6px hsl(0 0% 0% / 0.3);
+}
+
+// Light Mode
+/*
 :root {
   // Simple fonts
   --font-family-sans: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -46,3 +98,4 @@
   --shadow-large:  2px 4px 10px hsl(0 0% 0% / 0.1);
   --shadow-small:  1px 3px 6px hsl(0 0% 0% / 0.1);
 }
+*/

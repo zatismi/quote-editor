@@ -7,6 +7,7 @@ class QuotesController < ApplicationController
   end
 
   def index
+    # debugger
     # @quotes = Quote.all
     @quotes = Quote.ordered
   end
