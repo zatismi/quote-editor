@@ -11,5 +11,12 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def sign_in_as(user)
+      visit new_user_session_path
+      fill_in "Email", with: "accountant@kpmg.com"
+      fill_in "Password", with: "password" # Replace "password" with your test user's password
+      click_button "Log in"
+    end
+
   end
 end

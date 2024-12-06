@@ -32,7 +32,7 @@ class QuotesController < ApplicationController
         format.turbo_stream
       end
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -47,6 +47,7 @@ class QuotesController < ApplicationController
     end
   end
 
+  # TODO FIXME: There is something wrong with distroy
   def destroy
     @quote.destroy
 

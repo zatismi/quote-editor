@@ -4,6 +4,8 @@ class QuotesTest < ApplicationSystemTestCase
   setup do
     # @quote = quotes(:first)
     # We need to order quote as well in the system tests
+    # @user + users(:one)
+    sign_in_as(@user)
     @quote = Quote.ordered.first
   end
 
@@ -21,10 +23,11 @@ class QuotesTest < ApplicationSystemTestCase
     click_on "New quote"
     fill_in "Name", with: "Capybara quote"
 
-    assert_selector "h1", text: "Quotes"
+    assert_selector "h1", text: "New quote"
     click_on "Create quote"
 
-    assert_selector "h1", text: "Quotes"
+    click_on "Back to quotes"
+
     assert_text "Capybara quote"
   end
 

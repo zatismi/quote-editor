@@ -30,7 +30,7 @@ class Quote < ApplicationRecord
   # Sentactic Suger WOW!!!
   # broadcasts_to ->(quote) { "quotes" }, inserts_by: :prepend
   # We want to have the same signed-stream-name for the accountant and the manager and a different one for the eavesdropper. To do this, we have to change the stream name where the quotes' HTML will be broadcasted.
-  broadcasts_to ->(quote) { [ quote.company, "quotes" ] }, inserts_by: :prepend
+  broadcasts_to ->(quote) { [ quote.company, "quotes" ] }, inserts_by: :prepend, partial: "quotes/quote_without_devise"
 
   # def special_name
   #     "special_#{name}"
