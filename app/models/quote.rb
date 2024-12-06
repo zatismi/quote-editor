@@ -1,4 +1,6 @@
 class Quote < ApplicationRecord
+  belongs_to :company
+
   validates :name, presence: true
 
   scope :ordered, -> { order(id: :desc) }
@@ -26,7 +28,9 @@ class Quote < ApplicationRecord
   # after_destroy_commit -> { broadcast_remove_to "quotes" }
 
   # Sentactic Suger WOW!!!
-  broadcasts_to ->(quote) { "quotes" }, inserts_by: :prepend
+  # broadcasts_to ->(quote) { "quotes" }, inserts_by: :prepend
+  # We want to have the same signed-stream-name for the accountant and the manager and a different one for the eavesdropper. To do this, we have to change the stream name where the quotes' HTML will be broadcasted.
+  broadcasts_to ->(quote) { [ quote.company, "quotes" ] }, inserts_by: :prepend
 
   # def special_name
   #     "special_#{name}"

@@ -69,3 +69,11 @@ end
 
 # Use Redis for Action Cable
 gem "redis", "~> 4.0"
+
+# Authentucation Tool
+# gem "devise", "~> 4.8.1"
+gem "devise", "~> 4.9" # Or latest compatible version
+
+
+gem "faker"
+gem "ruby-progressbar"
