@@ -7,5 +7,10 @@
 
   <%= f.input :name, input_html: { autofocus: true } %>
   <%= link_to "Cancel", quotes_path, class: "btn btn--light" %>
-  <%= f.submit class: "btn btn--secondary" %>
+
+  <%# format: :html %>
+  <%= f.submit class: "btn btn--secondary", "data-turbo": false %>
+
+  <%# format: :turbo_stream %>
+  <%# <%= f.submit class: "btn btn--secondary" %> %>
 <% end %>
