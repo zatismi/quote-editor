@@ -28,6 +28,15 @@
 
   <body>
     <%= render "layouts/navbar" %>
+
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "layouts/flash" %>
+    <% end %>
+
+    <div id="flash">
+      <%# <%= render "layouts/flash" %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

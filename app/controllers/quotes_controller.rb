@@ -28,10 +28,19 @@ class QuotesController < ApplicationController
 
     if @quote.save
       respond_to do |format|
-        format.html { redirect_to quotes_path, notice: "Quote was successfully created." }
-        format.turbo_stream
+        format.html { redirect_to quotes_path, notice: "HTML: Quote was successfully created." }
+        format.turbo_stream { flash.now[:notice] = "STREAM: Quote was successfully created." }
+        # respond_to do |format|
+        #   format.html {
+        #     flash[:notice] = "Quote was successfully created."
+        #     redirect_to quotes_path
+        #   }
+        # format.turbo_stream {
+        #   flash[:notice] = "Quote was successfully created."
+        # }
       end
     else
+      flash[:error] = "Quote could not be created! Check Errors!"
       render :new, status: :unprocessable_entity
     end
   end
@@ -40,20 +49,25 @@ class QuotesController < ApplicationController
   end
 
   def update
+    # if @quote.update(quote_params)
+    #   redirect_to quotes_path, notice: "Quote was successfully updated."
     if @quote.update(quote_params)
-      redirect_to quotes_path, notice: "Quote was successfully updated."
+      respond_to do |format|
+        format.html { redirect_to quotes_path, notice: "Quote was successfully updated." }
+        format.turbo_stream { flash.now[:notice] = "Quote was successfully updated." }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  # TODO FIXME: There is something wrong with distroy
   def destroy
     @quote.destroy
 
     respond_to do |format|
+      # redirect_to quotes_path, notice: "Quote was successfully destroyed."
       format.html { redirect_to quotes_path, notice: "Quote was successfully destroyed." }
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = "Quote was successfully destroyed." }
     end
   end
 

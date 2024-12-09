@@ -5,5 +5,3 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 end
-
-# FIXME: Tests are not passing
