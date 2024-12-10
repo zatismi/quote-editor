@@ -15,7 +15,8 @@ class QuotesController < ApplicationController
   end
 
   def show
-    @instance_variables = instance_variables
+    @line_item_dates = @quote.line_item_dates.ordered
+    # @instance_variables = instance_variables
   end
 
   def new
