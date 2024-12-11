@@ -20,7 +20,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_10_094230) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "line_item_dates", force: :cascade do |t|Í
+  create_table "line_item_dates", force: :cascade do |t|
     t.bigint "quote_id", null: false
     t.date "date", null: false
     t.datetime "created_at", null: false

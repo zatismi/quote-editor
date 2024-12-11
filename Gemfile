@@ -77,6 +77,3 @@ gem "devise", "~> 4.9" # Or latest compatible version
 
 gem "faker"
 gem "ruby-progressbar"
-
-
-gem "sassc-rails"
