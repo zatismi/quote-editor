@@ -2,7 +2,9 @@
   <%= link_to sanitize("&larr; Back to quotes"), quotes_path %>
   <div class="header">
     <h1>
-      <%= @quote.name.split.map(&:capitalize).join(' ') %><br>
+      <%= @quote.name %><
+      <%# <%= @quote.name.split.map(&:capitalize).join(' ') %>
+
       <%# 12 Hours Format: %>
       <%# <%= @quote.created_at.in_time_zone('Berlin').strftime("%d/%m/%Y - %I:%M:%S %p") %>
       <%# 24 Hours Format: %>

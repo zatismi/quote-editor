@@ -13,10 +13,14 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
     def sign_in_as(user)
       visit new_user_session_path
-      fill_in "Email", with: "accountant@kpmg.com"
-      fill_in "Password", with: "password" # Replace "password" with your test user's password
+      fill_in "Email", with: user.email
+      fill_in "Password", with: "password"
       click_button "Log in"
+      # Debugging output
+      puts "Current path after login attempt: #{current_path}"
+      # After Adding the next line the test was able to save that the user info as is, otherwhise user was not found somehow, which doesn't make any sense at the moment
+      # TicketToaster - Wed - 11.12.2024 - 14:52
+      puts "User Email is: #{user.email}"
     end
-
   end
 end

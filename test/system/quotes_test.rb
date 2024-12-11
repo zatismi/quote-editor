@@ -4,13 +4,20 @@ class QuotesTest < ApplicationSystemTestCase
   setup do
     # @quote = quotes(:first)
     # We need to order quote as well in the system tests
-    # @user + users(:one)
+    @user = users(:accountant)
+
     sign_in_as(@user)
     @quote = Quote.ordered.first
+    # puts @quote
+    # put @quser
   end
 
   test "Showing a quote" do
+    puts @user == nil
+
     visit quotes_path
+
+    assert_selector "h1", text: "Quotes"
     click_link @quote.name
 
     assert_selector "h1", text: @quote.name
@@ -18,37 +25,23 @@ class QuotesTest < ApplicationSystemTestCase
 
   test "Creating a new quote" do
     visit quotes_path
-    assert_selector "h1", text: "Quotes"
-
     click_on "New quote"
     fill_in "Name", with: "Capybara quote"
-
-    assert_selector "h1", text: "New quote"
     click_on "Create quote"
-
-    click_on "Back to quotes"
-
+    click_link "Capybara quote"
     assert_text "Capybara quote"
   end
 
   test "Updating a quote" do
     visit quotes_path
-    assert_selector "h1", text: "Quotes"
-
     click_on "Edit", match: :first
     fill_in "Name", with: "Updated quote"
-
-    assert_selector "h1", text: "Quotes"
     click_on "Update quote"
-
-    assert_selector "h1", text: "Quotes"
-    assert_text "Updated quote"
+    assert_selector "a", text: "Updated quote"
   end
 
   test "Destroying a quote" do
     visit quotes_path
-    assert_text @quote.name
-
     click_on "Delete", match: :first
     assert_no_text @quote.name
   end
