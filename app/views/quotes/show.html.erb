@@ -2,33 +2,17 @@
   <%= link_to sanitize("&larr; Back to quotes"), quotes_path %>
   <div class="header">
     <h1>
-      <%= @quote.name %><
-      <%# <%= @quote.name.split.map(&:capitalize).join(' ') %>
+      <%= @quote.name %>
 
-      <%# 12 Hours Format: %>
-      <%# <%= @quote.created_at.in_time_zone('Berlin').strftime("%d/%m/%Y - %I:%M:%S %p") %>
-      <%# 24 Hours Format: %>
-      <%# <%= @quote.created_at.in_time_zone('Berlin').strftime("%d/%m/%Y - %H:%M:%S Uhr") %>
-      <%# belongs to %>
-      <%# <%= tag.span @quote.company.name.downcase %>
-      <%# Company %>
-      <%#= hello %>
-      <%#= get_quote.name %>
-
-      <%#= @instance_variables %>
-      <%# <%= @_config %>
-
-
-      <%#= @quote.name %>
-      <%#= @quote.special_name %>
-      <%#= "special_#{@quote.name}" %>
     </h1>
     <%= link_to "New date",
                 new_quote_line_item_date_path(@quote),
                 class: "btn btn--primary" %>
   </div>
 
+  <%# TODO:FIXME ActiveRecord::AssociationNotFoundError in Quotes#show %>
   <%= turbo_frame_tag "line_item_dates" do %>
+    <%# TODO:FIXME ActiveRecord::AssociationNotFoundError in Quotes#show %>
     <%= render @line_item_dates, quote: @quote %>
   <% end %>
 </main>
