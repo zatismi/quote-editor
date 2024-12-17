@@ -1,13 +1,15 @@
+<%# sigup %>
+
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs form--group" style="width: 100px;">
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email", style: "background-color: cyan" } %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -17,7 +19,7 @@
                 input_html: { autocomplete: "new-password" } %>
   </div>
 
-  <div class="form-actions">
+  <div class="btn btn--primary">
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
