@@ -29,6 +29,21 @@
   <% end %>
 
   <p><strong>You first created this account on: </strong> <%= current_user.created_at.strftime("%d.%m.%Y - %I:%M:%S %p") %></p>
+
+  <% account_age_seconds = Time.current - current_user.created_at %>
+  <% days = (account_age_seconds / 1.day).to_i %>
+  <% hours = ((account_age_seconds % 1.day) / 1.hour).to_i %>
+  <% minutes = ((account_age_seconds % 1.hour) / 1.minute).to_i %>
+  <% seconds = (account_age_seconds % 1.minute).to_i %>
+
+  <% parts = [] %>
+  <% parts << "#{days} days" if days > 0 %>
+  <% parts << "#{hours} hours" if hours > 0 %>
+  <% parts << "#{minutes} minutes" if minutes > 0 %>
+  <% parts << "#{seconds} seconds" if seconds > 0 %>
+
+  <p><strong>You have been with us for:</strong> <%= parts.join(", ") %></p>
+
   <%# <p><strong>You first used your account on: </strong> <%= current_user.last_sign_in_at.strftime("%d.%m.%Y - %I:%M:%S %p") if current_user.last_sign_in_at %>
 
     <%# <% if current_user.last_sign_in_at.present? %>
