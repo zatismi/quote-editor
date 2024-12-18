@@ -77,3 +77,7 @@ gem "devise", "~> 4.9" # Or latest compatible version
 
 gem "faker"
 gem "ruby-progressbar"
+
+
+# Bootstrap
+gem "bootstrap", "~> 5.3"

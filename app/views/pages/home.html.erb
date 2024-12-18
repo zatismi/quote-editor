@@ -1,11 +1,82 @@
 <main class="container">
-  <h1>Quote editor</h1>
-  <p>A blazing fast quote editor built with Hotwire</p>
+<% if user_signed_in? %>
+  <h1>Dashboard</h1>
 
-
-  <% if user_signed_in? %>
-    <%= link_to "View quotes", quotes_path, class: "btn btn--dark" %>
+  <% # Display the count of quotes for the current user %>
+  <% if current_user.company.quotes.count == 0 %>
+    <p>You have not created any quotes yet.</p>
   <% else %>
-    <%= link_to "Sign in", new_user_session_path, class: "btn btn--dark" %>
+    <%= "You have #{current_user.company.quotes.count} #{'quote'.pluralize(current_user.company.quotes.count)}" %> <br><br>
+
+    <% # Variables scoped to the current user's quotes %>
+    <% last_touched_quote = current_user.company.quotes.order(updated_at: :desc).limit(1).first %>
+    <% first_created_quote = current_user.company.quotes.order(created_at: :asc).limit(1).first %>
+    <% last_updated_quote = current_user.company.quotes.order(updated_at: :desc).limit(1).first %>
+    <% last_deleted_quote = current_user.company.quotes.where.not(deleted_at: nil).order(deleted_at: :desc).limit(1).first %>
+    <% last_created_quote = current_user.company.quotes.order(created_at: :desc).limit(1).first %>
+
+    <%= display_quote_info("Last Touched Quote", last_touched_quote, :updated_at) %>
+    <%= display_quote_info("First Created Quote", first_created_quote, :created_at) %>
+    <%= display_quote_info("Last Updated Quote", last_updated_quote, :updated_at) %>
+    <%= display_quote_info("Last Deleted Quote", last_deleted_quote, :deleted_at) %>
+    <%= display_quote_info("Last Created Quote", last_created_quote, :created_at) %>
+  <% end %>
+
+  <% if last_deleted_quote.present? %>
+    <p><strong>Last Deleted Quote:</strong> <%= last_deleted_quote.name %> <strong>deleted at:</strong> <%= last_deleted_quote.deleted_at.strftime("%d.%m.%Y - %I:%M:%S %p") %></p>
+  <% else %>
+    <p>No quotes have been deleted yet.</p>
+  <% end %>
+
+  <p><strong>You first created this account on: </strong> <%= current_user.created_at.strftime("%d.%m.%Y - %I:%M:%S %p") %></p>
+  <%# <p><strong>You first used your account on: </strong> <%= current_user.last_sign_in_at.strftime("%d.%m.%Y - %I:%M:%S %p") if current_user.last_sign_in_at %>
+
+    <%# <% if current_user.last_sign_in_at.present? %>
+      <%# <p><strong>Last Login:</strong> <%= current_user.last_sign_in_at.strftime("%d.%m.%Y - %I:%M:%S %p") %></p>
+    <%# <% else %>
+      <%# <p>This user has not logged in yet.</p>
+    <% end %>
+
+    <%= link_to "View quotes", quotes_path, class: "btn btn-dark" %>
+  <% else %>
+    <%# <%= link_to "Sign in", new_user_session_path, class: "btn btn--dark" %>
+    <div id="carouselExampleDark" class="carousel carousel-dark slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img src="./assets/images/quote.webp" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="/app/assets/images/add.webp" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/Users/alaa/Code/quote-editor/app/assets/images/edit.webp" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
   <% end %>
 </main>

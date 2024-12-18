@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   def ensure_company
     self.company ||= Company.create(name: "Company of the People")
-    debugger
+    # debugger
   end
 
   def name

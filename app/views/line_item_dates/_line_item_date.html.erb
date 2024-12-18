@@ -11,11 +11,11 @@
                         [quote, line_item_date, line_item],
                         method: :delete,
                         form: { data: { turbo_frame: "_top" } },
-                        class: "btn btn--light" %>
+                        class: "btn btn-danger" %>
           <%= link_to "Edit",
                       [:edit, quote, line_item_date, line_item],
                       data: { turbo_frame: "_top" },
-                      class: "btn btn--light" %>
+                      class: "btn btn-warning" %>
         </div>
       </div>
     <% end %>
@@ -39,7 +39,7 @@
         <%= link_to "Add item",
                     [:new, quote, line_item_date, :line_item],
                     data: { turbo_frame: nested_dom_id(line_item_date, LineItem.new) },
-                    class: "btn btn--primary" %>
+                    class: "btn btn-primary" %>
       </div>
     </div>
   </div>
