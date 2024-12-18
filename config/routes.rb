@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  match "*path", to: "errors#not_found", via: :all
 
 
   resources :quotes do
@@ -25,4 +24,17 @@ Rails.application.routes.draw do
       resources :line_items, except: [ :index, :show ]
     end
   end
+
+  # TODO: index with links to all errors
+  scope controller: :errors, path: "errors" do
+    get :bad_request
+    get :unprocessable_entity
+    get :internal_server_error
+  end
+
+
+  get "errors/bad_request", to: "errors#bad_request"
+  get "errors/not_found", to: "errors#not_found"
+
+  match "*path", to: "errors#not_found", via: :all
 end
