@@ -1,6 +1,10 @@
 <main class="container">
 <% if user_signed_in? %>
-  <h1>Dashboard</h1>
+  <h1>
+    <%# see https://fontawesome.com/v6/search?q=tada&o=r&m=free %>
+    <i class="fa-solid fa-pepper-hot"></i>
+    Dashboard
+  </h1>
 
   <% # Display the count of quotes for the current user %>
   <% if current_user.company.quotes.count == 0 %>

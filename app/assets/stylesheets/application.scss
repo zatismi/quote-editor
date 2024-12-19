@@ -1,29 +1,4 @@
-// @import 'bootstrap';
-// // Mixins
-// @import "mixins/media";
+// TODO: check components, config, layouts, mixins for usage and import here or remove
 
-// // Configuration
-// @import "config/variables";
-// @import "config/reset";
-
-// // Components
-// @import "components/btn";
-// @import "components/error_message";
-// @import "components/form";
-// @import "components/visually_hidden";
-// @import "components/quote";
-// @import "components/turbo_progress_bar";
-// @import "components/navbar";
-// @import "components/empty_state";
-// @import "components/line_item_date";
-// @import "components/line_item";
-
-// @import "components/my_custom";
-
-// // Layouts
-// @import "layouts/container";
-// @import "layouts/header";
-// @import "components/flash";
-// @import "config/_animations";
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
-@import "/app/assets/stylesheets/custom.scss";
+@import "fonts";
+@import "bootstrap";
