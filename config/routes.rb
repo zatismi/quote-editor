@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # TODO: index with links to all errors
+  # ✅ DONE
   scope controller: :errors, path: "errors" do
     get :bad_request
     get :unprocessable_entity
