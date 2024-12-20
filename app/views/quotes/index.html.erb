@@ -2,28 +2,42 @@
 
 <div class="container">
   <div class="header">
-    <h1>Quotes</h1>
+    <h1 class="mt-2">Quotes</h1>
+    <% if @quotes.any? %>
+    <h1 class="mt-2">Quotes</h1>
+    <% if @quotes.any? %>
     <%= link_to "New quote",
                 new_quote_path,
-                class: "btn btn--primary",
+                class: "btn btn-primary",
+                class: "btn btn-primary",
                 data: { turbo_frame: dom_id(Quote.new) } %>
+    <% end %>
+    <% end %>
   </div>
 
-  <%= turbo_frame_tag Quote.new %>
-
-  <%= turbo_frame_tag "quotes" do %>
-    <%= render "quotes/empty_state" %>
-    <%= render @quotes %>
-  <% end %>
-
-  <%# My Solution %>
-    <%# <%= turbo_frame_tag Quote.new do %>
-    <%# <% if @quotes.none? %>
-      <%# <%= render "quotes/empty_state" %>
-    <%# <% else %>
-      <%# <%= turbo_frame_tag "quotes" do %>
-        <%# <%= render @quotes %>
-      <%# <% end %>
-    <%# <% end %>
-  <%# <% end %>
+<%= turbo_frame_tag "quotes" do %>
+  <% if @quotes.any? %>
+    <table class="table">
+      <thead>
+        <tr class="row">
+          <th class="col-8">Quote Name</th>
+          <th class="col-4">Action (Edit/Delete)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @quotes.each do |quote| %>
+          <tr class="row w-100">
+            <td class="col-8"><%= quote.name %></td>
+            <td class="col-4">
+              <%= link_to 'Edit', edit_quote_path(quote), class: 'btn btn-sm btn-primary' %>
+              <%= link_to 'Delete', quote_path(quote), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <%= render "quotes/empty_state" %>
+    <% end %>
+<% end %>
 </div>
