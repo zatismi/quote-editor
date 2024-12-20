@@ -16,90 +16,88 @@
     <% last_created_quote = current_user.company.quotes.order(created_at: :desc).limit(1).first %>
 
   <div class="container px-4 py-5" id="hanging-icons">
-    <h2 class="pb-2 border-bottom">
+    <h1 class="pb-2 border-bottom">
       <i class="fa-solid fa-gauge fa-beat"></i>
       Dashboard
-    </h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    </h1>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-4">
       <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-3 flex-shrink-0 me-3">
-          <i class="fa-solid fa-backward-step"></i>        </div>
+        <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-3 flex-shrink-0 me-3">
+          <i class="fa-solid fa-backward-step"></i>
+        </div>
         <div>
           <h3 class="fs-2 text-body-emphasis">First Created Quote</h3>
-          <p><%= first_created_quote.name %></p>
+          <h4><%= first_created_quote.name %></h4>
           <p><%= first_created_quote&.created_at.strftime('%B %d, %Y') %></p>
-          <a href="#" class="btn btn-primary">
-            Open Quote
-          </a>
+          <%= link_to "<i class='fa-solid fa-eye'></i> Open Quote".html_safe,
+            quote_path(first_created_quote),
+            data: { turbo_frame: "_top" },
+            class: "btn btn-primary" %>
         </div>
       </div>
       <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-3 flex-shrink-0 me-3">
+        <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-3 flex-shrink-0 me-3">
           <i class="fa-solid fa-forward-step"></i>
         </div>
         <div>
           <h3 class="fs-2 text-body-emphasis">Last Created Quote</h3>
-          <p><%= last_created_quote.name %></p>
+          <h4><%= last_created_quote.name %></h4>
           <p><%= last_created_quote&.created_at.strftime('%B %d, %Y') %></p>
-          <a href="#" class="btn btn-primary">
-            Open Quote
-          </a>
+          <%= link_to "<i class='fa-solid fa-eye'></i> Open Quote".html_safe,
+            quote_path(last_created_quote),
+            data: { turbo_frame: "_top" },
+            class: "btn btn-primary" %>
         </div>
       </div>
       <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-3 flex-shrink-0 me-3">
+        <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-3 flex-shrink-0 me-3">
           <i class="fa-solid fa-file-pen"></i>
         </div>
         <div>
           <h3 class="fs-2 text-body-emphasis">Last Updated Quote</h3>
-          <p><%= last_touched_quote.name %></p>
+          <h4><%= last_touched_quote.name %></h4>
           <p><%= last_touched_quote&.updated_at.strftime('%B %d, %Y') %></p>
-          <a href="#" class="btn btn-primary">
-            Open Quote
-          </a>
+          <%= link_to "<i class='fa-solid fa-eye'></i> Open Quote".html_safe,
+            quote_path(last_touched_quote),
+            data: { turbo_frame: "_top" },
+            class: "btn btn-primary" %>
         </div>
       </div>
       <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-3 flex-shrink-0 me-3">
+        <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-3 flex-shrink-0 me-3">
           <i class="fa-solid fa-ban"></i>
         </div>
         <div>
           <h3 class="fs-2 text-body-emphasis">Last Deleted Quote</h3>
-          <p><%= last_deleted_quote&.name || 'No quote deleted yet' %></p>
+          <h4><%= last_deleted_quote&.name || 'No quote deleted yet' %></h4>
           <p><%= last_deleted_quote&.deleted_at&.strftime('%B %d, %Y') || 'N/A' %></p>
-          <a href="#" class="btn btn-primary">
-            Open Quote
-          </a>
+          <% if last_deleted_quote %>
+            <%= link_to "<i class='fa-solid fa-eye'></i> Open Quote".html_safe,
+                        quote_path(last_deleted_quote),
+                        data: { turbo_frame: "_top" },
+                        class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
-      <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-3 flex-shrink-0 me-3">
-          <i class="fa-regular fa-face-smile"></i>
-        </div>
-        <div>
-          <h3 class="fs-2 text-body-emphasis">You Have Been With us since</h3>
-          <p><%= current_user.created_at.strftime('%B %d, %Y') %></p>
-          <p><%= current_user.created_at >= 1.week.ago ? "Over a week" : "Less than a week" %></p>
-          <a href="#" class="btn btn-primary">
-            Open Quote
-          </a>
-        </div>
+
+    </div>
+
+    <div class="col d-flex align-items-start pl-3 py-3 shadow justify-content-center">
+      <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-1 flex-shrink-0 me-3">
+        <i class="fa-solid fa-rocket"></i>
+      </div>
+      <div>
+        <h3 class="fs-2 text-body-emphasis">You Have Been With us since</h3>
+        <h4><%= current_user.created_at.strftime('%B %d, %Y') %></h4>
+        <p><%= current_user.created_at >= 1.week.ago ? "Over a week" : "Less than a week" %></p>
+        <%# <a href="#" class="btn btn-primary">
+          Manage Account
+        </a> %>
       </div>
     </div>
+
   </div>
   <% end %>
-
-  <%# if last_deleted_quote.present? %>
-    <%# <p><strong>Last Deleted Quote:</strong> <%= last_deleted_quote.name %>
-    <%# <strong>deleted at:</strong> <%= last_deleted_quote.deleted_at.strftime("%d.%m.%Y - %I:%M:%S %p") %>
-  <%# else %>
-    <%# <p>No quotes have been deleted yet.</p> %>
-  <%# end %>
-
-  <%# <p><strong>You first created this account on: </strong> <%= current_user.created_at.strftime("%d.%m.%Y - %I:%M:%S %p") %>
-
-
-
 
   <% else %>
     <div id="carouselExampleDark" class="carousel carousel-dark slide">
