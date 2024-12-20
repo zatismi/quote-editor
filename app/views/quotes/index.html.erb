@@ -4,10 +4,14 @@
   <div class="header">
     <h1 class="mt-2">Quotes</h1>
     <% if @quotes.any? %>
+    <h1 class="mt-2">Quotes</h1>
+    <% if @quotes.any? %>
     <%= link_to "New quote",
                 new_quote_path,
                 class: "btn btn-primary",
+                class: "btn btn-primary",
                 data: { turbo_frame: dom_id(Quote.new) } %>
+    <% end %>
     <% end %>
   </div>
 

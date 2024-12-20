@@ -1,0 +1,196 @@
+<main class="container">
+<% if user_signed_in? %>
+  <h1>Dashboard</h1>
+
+  <% # Display the count of quotes for the current user %>
+  <% if current_user.company.quotes.count == 0 %>
+    <p>You have not created any quotes yet.</p>
+<% else %>
+    <%#= "You have #{current_user.company.quotes.count} #{'quote'.pluralize(current_user.company.quotes.count)}" %>
+
+    <% # Variables scoped to the current user's quotes %>
+    <% last_touched_quote = current_user.company.quotes.order(updated_at: :desc).limit(1).first %>
+    <% first_created_quote = current_user.company.quotes.order(created_at: :asc).limit(1).first %>
+    <% last_updated_quote = current_user.company.quotes.order(updated_at: :desc).limit(1).first %>
+    <% last_deleted_quote = current_user.company.quotes.where.not(deleted_at: nil).order(deleted_at: :desc).limit(1).first %>
+    <% last_created_quote = current_user.company.quotes.order(created_at: :desc).limit(1).first %>
+
+    <%#= display_quote_info("Last Touched Quote", last_touched_quote, :updated_at) %>
+    <%#= display_quote_info("First Created Quote", first_created_quote, :created_at) %>
+    <%#= display_quote_info("Last Updated Quote", last_updated_quote, :updated_at) %>
+    <%#= display_quote_info("Last Deleted Quote", last_deleted_quote, :deleted_at) %>
+    <%#= display_quote_info("Last Created Quote", last_created_quote, :created_at) %>
+
+      <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">SVG</th>
+        <th scope="col">Info</th>
+        <th scope="col">Name</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Total Quotes -->
+      <tr>
+        <td>Total Quotes</td>
+        <td colspan="2">
+          <%= current_user.company.quotes.count %></td>
+      </tr>
+
+      <!-- First Created Quote -->
+      <tr>
+        <td><i class="bi bi-fingerprint" style="width: 50px; height: auto"></i></td>
+        <td>First Created</td>
+        <td><%= first_created_quote.name %></td>
+        <td><%= first_created_quote&.created_at.strftime('%B %d, %Y') %></td>
+      </tr>
+
+      <!-- Last Created Quote -->
+      <tr>
+        <td><i class="bi bi-fingerprint"></i></td>
+        <td>Last Created</td>
+        <td><%= last_created_quote.name %></td>
+        <td><%= last_created_quote&.created_at.strftime('%B %d, %Y') %></td>
+      </tr>
+
+      <!-- Last Updated Quote -->
+      <tr>
+        <td><i class="bi bi-fingerprint"></i></td>
+        <td>Last Updated</td>
+        <td><%= last_updated_quote.name %></td>
+        <td><%= last_updated_quote&.updated_at.strftime('%B %d, %Y') %></td>
+      </tr>
+
+      <!-- Last Touched Quote -->
+      <tr>
+        <td><i class="bi bi-fingerprint"></i></td>
+        <td>Last Touched</td>
+        <td><%= last_touched_quote.name %></td>
+        <td><%= last_touched_quote&.updated_at.strftime('%B %d, %Y') %></td>
+      </tr>
+
+      <!-- Last Deleted Quote -->
+      <tr>
+        <td><i class="bi bi-fingerprint"></i></td>
+        <td>Last Deleted</td>
+        <td><%= last_deleted_quote&.name || 'No quote deleted yet' %></td>
+        <td><%= last_deleted_quote&.deleted_at&.strftime('%B %d, %Y') || '' %></td>
+      </tr>
+
+      <!-- First Account Created -->
+      <tr>
+        <td><i class="bi bi-fingerprint"></i></td>
+        <td>First Account Created</td>
+        <td><%= current_user.created_at.strftime('%B %d, %Y') %></td>
+        <td></td>
+      </tr>
+
+      <!-- Account Usage -->
+      <tr>
+        <td><i class="bi bi-fingerprint"></i></td>
+        <td>You Have Been Using This Account Since</td>
+        <td colspan="2"><%= current_user.created_at.strftime('%B %d, %Y') %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="container d-flex flex-column text-center w-50">
+    <div class="row">
+      <div class="col-12 bg-warning d-flex flex-column justify-content-center align-items-center">
+        <h4 class="col-4">Total Quotes</h4>
+        <h1><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-balloon-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8.48 10.901C11.211 10.227 13 7.837 13 5A5 5 0 0 0 3 5c0 2.837 1.789 5.227 4.52 5.901l-.244.487a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2 2 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224zM4.352 3.356a4 4 0 0 1 3.15-2.325C7.774.997 8 1.224 8 1.5s-.226.496-.498.542c-.95.162-1.749.78-2.173 1.617a.6.6 0 0 1-.52.341c-.346 0-.599-.329-.457-.644"/>
+</svg><%= current_user.company.quotes.count %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 bg-success d-flex flex-column justify-content-center align-items-center">x</div>
+      <div class="col-6 bg-danger d-flex flex-column justify-content-center align-items-center">x</div>
+    </div>
+    <div class="row">
+      <div class="col-4 bg-primary d-flex flex-column justify-content-center align-items-center">x</div>
+      <div class="col-4 bg-secondary d-flex flex-column justify-content-center align-items-center">x</div>
+      <div class="col-4 bg-warning d-flex flex-column justify-content-center align-items-center">x</div>
+    </div>
+    <div class="row">
+      <div class="col-6 bg-success d-flex flex-column justify-content-center align-items-center">x</div>
+      <div class="col-6 bg-warning">x</div>
+    </div>
+  </div>
+  <% end %>
+
+  <%# if last_deleted_quote.present? %>
+    <%# <p><strong>Last Deleted Quote:</strong> <%= last_deleted_quote.name %>
+    <%# <strong>deleted at:</strong> <%= last_deleted_quote.deleted_at.strftime("%d.%m.%Y - %I:%M:%S %p") %>
+  <%# else %>
+    <%# <p>No quotes have been deleted yet.</p> %>
+  <%# end %>
+
+  <%# <p><strong>You first created this account on: </strong> <%= current_user.created_at.strftime("%d.%m.%Y - %I:%M:%S %p") %>
+
+  <% account_age_seconds = Time.current - current_user.created_at %>
+  <% days = (account_age_seconds / 1.day).to_i %>
+  <% hours = ((account_age_seconds % 1.day) / 1.hour).to_i %>
+  <% minutes = ((account_age_seconds % 1.hour) / 1.minute).to_i %>
+  <% seconds = (account_age_seconds % 1.minute).to_i %>
+
+  <% parts = [] %>
+  <% parts << "#{days} days" if days > 0 %>
+  <% parts << "#{hours} hours" if hours > 0 %>
+  <% parts << "#{minutes} minutes" if minutes > 0 %>
+  <% parts << "#{seconds} seconds" if seconds > 0 %>
+
+  <p><strong>You have been with us for:</strong> <%= parts.join(", ") %>
+
+  <%# <p><strong>You first used your account on: </strong> <%= current_user.last_sign_in_at.strftime("%d.%m.%Y - %I:%M:%S %p") if current_user.last_sign_in_at %>
+
+    <%# <% if current_user.last_sign_in_at.present? %>
+      <%# <p><strong>Last Login:</strong> <%= current_user.last_sign_in_at.strftime("%d.%m.%Y - %I:%M:%S %p") %></p>
+    <%# <% else %>
+      <%# <p>This user has not logged in yet.</p>
+    <% end %>
+
+    <%= link_to "View All Quotes", quotes_path, class: "btn btn-dark" %>
+  <% else %>
+    <%# <%= link_to "Sign in", new_user_session_path, class: "btn btn--dark" %>
+    <div id="carouselExampleDark" class="carousel carousel-dark slide">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="./assets/images/quote.webp" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="/app/assets/images/add.webp" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/Users/alaa/Code/quote-editor/app/assets/images/edit.webp" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  <% end %>
+</main>
