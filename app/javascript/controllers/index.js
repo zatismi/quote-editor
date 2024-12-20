@@ -4,5 +4,14 @@
 
 import { application } from "./application"
 
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
+
+import ColorThemeController from "./color_theme_controller"
+application.register("color-theme", ColorThemeController)
+
 import RemovalsController from "./removals_controller"
 application.register("removals", RemovalsController)
+
+import ToastController from "./toast_controller"
+application.register("toast", ToastController)
