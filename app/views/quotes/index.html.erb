@@ -11,13 +11,6 @@
     <% end %>
   </div>
 
-  <%# <%= turbo_frame_tag Quote.new %>
-
-  <%# <%= turbo_frame_tag "quotes" do %>
-    <%# <%= render "quotes/empty_state" if not quotes - message %>
-    <%# <%= render @quotes %>
-  <%# <% end %>
-
 <%= turbo_frame_tag "quotes" do %>
   <% if @quotes.any? %>
     <table class="table">
@@ -43,15 +36,4 @@
       <%= render "quotes/empty_state" %>
     <% end %>
 <% end %>
-
-  <%# My Solution %>
-    <%# <%= turbo_frame_tag Quote.new do %>
-    <%# <% if @quotes.none? %>
-      <%# <%= render "quotes/empty_state" %>
-    <%# <% else %>
-      <%# <%= turbo_frame_tag "quotes" do %>
-        <%# <%= render @quotes %>
-      <%# <% end %>
-    <%# <% end %>
-  <%# <% end %>
 </div>

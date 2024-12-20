@@ -4,8 +4,8 @@
 
 // https://getbootstrap.com/docs/5.3/customize/options/
 
-$enable-rounded: false;
-$enable-shadows: true;
+$enable-rounded: false; // was true
+$enable-shadows: false;
 // $enable-cssgrid: true;
 // $enable-gradients: true;
 // $enable-negative-margins: true;

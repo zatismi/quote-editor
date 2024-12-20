@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
     @current_company ||= current_user.company if user_signed_in?
   end
 
+  # before_action { debugger }
+
   helper_method :current_company
   # TODO: Read about later
   # we might not need allow_browser... anymore, but I am not sure yet
