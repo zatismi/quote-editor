@@ -1,18 +1,12 @@
-<%= turbo_frame_tag dom_id(quote) do %>
-  <%# <%= current_user.name %>
-
-  <div class="quote">
-    <%= link_to quote.name,
-                quote_path(quote),
-                data: { turbo_frame: "_top" } %>
-    <div class="quote__actions">
-      <%= button_to "Delete",
-                    quote_path(quote),
-                    method: :delete,
-                    class: "btn btn--light" %>
-      <%= link_to "Edit",
-                  edit_quote_path(quote),
-                  class: "btn btn--light" %>
+<tr id="<%= dom_id(quote) %>" class="row w-100 ps-3">
+  <td class="col-8">
+    <%= link_to quote.name, quote_path(quote), data: { turbo_frame: "show_quote" } %>
+  </td>
+  <td class="col-4">
+    <div class="d-flex justify-content-between">
+      <%= link_to 'Edit', edit_quote_path(quote), class: 'btn btn-sm btn-primary', data: { turbo_frame: "_top" } %>
+      <%= button_to 'Delete', quote_path(quote), method: :delete, data: {turbo_confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
+      <%= link_to 'Delete', quote_path(quote), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-danger' %>
     </div>
-  </div>
-<% end %>
+  </td>
+</tr>

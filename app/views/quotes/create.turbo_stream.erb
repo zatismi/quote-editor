@@ -1,7 +1,15 @@
 <%# app/views/quotes/create.turbo_stream.erb %>
-
-<%= turbo_stream.prepend "quotes" do %>
-  <%= render partial: "quote_created_msg", locals: { quote: @quote } %>
+<%= turbo_stream.update "show_quote" do %>
+ <%= render @quote %>
 <% end %>
-<%= turbo_stream.update Quote.new, "" %>
+<%= turbo_stream.prepend "quotes_table" do %>
+  <%# <%= render partial: "quote", locals: { quote: @quote } %>
+  <%= render @quote %>
+<% end %>
+<%= turbo_stream.update Quote.new do %>
+  <%= link_to "New quote",
+    new_quote_path,
+    class: "btn btn-primary"
+    %>
+<% end%>
 <%= render_turbo_stream_flash_messages %>

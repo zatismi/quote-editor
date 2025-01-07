@@ -1,51 +1,45 @@
 <%= turbo_frame_tag line_item_date do %>
-  <div class="line-item-date">
+  <div class="line-item-date border my-3 p-3 shadow">
     <%= turbo_frame_tag dom_id(line_item_date, :edit) do %>
       <div class="line-item-date__header">
         <div class="d-flex justify-content-between align-items-center">
-        <h3 class="line-item-date__title">
-          <%= l(line_item_date.date, format: :long) %>
-        </h3>
-
-        <div class="d-flex gap-2">
+          <h3 class="line-item-date__title">
+            <%= l(line_item_date.date, format: :long) %>
+          </h3>
+          <div class="d-flex gap-2">
             <%= button_to "Delete Date",
                 [quote, line_item_date],
                 method: :delete,
                 form: { data: { turbo_frame: "_top" } },
                 class: "btn btn-danger" %>
-
             <%= link_to "Edit Date",
                         [:edit, quote, line_item_date],
                         data: { turbo_frame: "_top" },
                         class: "btn btn-warning" %>
+          </div>
         </div>
       </div>
-        </div>
-
     <% end %>
-      <div class="line-item line-item-header row">
-        <div class="col-4">Article</div>
-        <div class="col-2">Item Price</div>
-        <div class="col-2">Quantity</div>
-        <div class="col-2">Quantity Price</div>
-        <div class="col-2">Actions</div>
-      </div>
-
-      <%# In the extract from the logs above, we are querying the line_items table %>
-      <%# twice because we have two line item dates, but we would query it n times if we %>
-      <%# had n line item dates. This is because each time we render a new line item date, %>
-      <%# we also perform a request to retrieve the associated line items because of this line: %>
-      <%= turbo_frame_tag nested_dom_id(line_item_date, "line_items") do %>
-        <%= render line_item_date.line_items, quote: quote, line_item_date: line_item_date %>
-      <% end %>
-      <%= turbo_frame_tag nested_dom_id(line_item_date, LineItem.new) %>
-
-      <div class="line-item-date__footer">
-        <%= link_to "Add item",
+    <div class="line-item line-item-header row">
+      <div class="col-4">Article</div>
+      <div class="col-2">Item Price</div>
+      <div class="col-2">Quantity</div>
+      <div class="col-2">Quantity Price</div>
+      <div class="col-2">Actions</div>
+    </div>
+    <%# In the extract from the logs above, we are querying the line_items table %>
+    <%# twice because we have two line item dates, but we would query it n times if we %>
+    <%# had n line item dates. This is because each time we render a new line item date, %>
+    <%# we also perform a request to retrieve the associated line items because of this line: %>
+    <%= turbo_frame_tag nested_dom_id(line_item_date, "line_items") do %>
+      <%= render line_item_date.line_items, quote: quote, line_item_date: line_item_date %>
+    <% end %>
+    <%= turbo_frame_tag nested_dom_id(line_item_date, LineItem.new) %>
+    <div class="line-item-date__footer">
+      <%= link_to "Add item",
                     [:new, quote, line_item_date, :line_item],
                     data: { turbo_frame: nested_dom_id(line_item_date, LineItem.new) },
                     class: "btn btn-primary" %>
-      </div>
     </div>
   </div>
-<% end %>
+  <% end %>
