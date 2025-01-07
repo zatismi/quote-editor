@@ -6,6 +6,11 @@
   </div>
 
   <%= turbo_frame_tag @quote do %>
-    <%= render "form", quote: @quote %>
+    <div class="border border-success p-3 mt-3 text-center">
+      <span class="d-flex align-items-center bg-secondary text-white px-2 py-1" style="border-radius: 5px;">
+      Create new quote
+      </span>
+      <%= render "form", quote: @quote %>
+    </div>
   <% end %>
 </main>

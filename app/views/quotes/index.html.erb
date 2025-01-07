@@ -1,41 +1,52 @@
-<%= turbo_stream_from current_company, "quotes" %>
+<%# <%= turbo_stream_from current_company, "quotes" %>
 
 <div class="container">
-  <div class="header">
-    <h1 class="mt-2">Quotes</h1>
+  <div class="header mt-3">
     <% if @quotes.any? %>
-    <h1 class="mt-2">Quotes</h1>
-    <% if @quotes.any? %>
-    <%= link_to "New quote",
-                new_quote_path,
-                class: "btn btn-primary",
-                class: "btn btn-primary",
-                data: { turbo_frame: dom_id(Quote.new) } %>
+      <%= turbo_frame_tag dom_id(Quote.new) do %>
+        <%= link_to "New quote",
+          new_quote_path,
+          class: "btn btn-primary"
+          %>
+      <% end %>
     <% end %>
+    <%= turbo_frame_tag "show_quote" do %>
+      empty
     <% end %>
   </div>
 
 <%= turbo_frame_tag "quotes" do %>
   <% if @quotes.any? %>
-    <table class="table">
-      <thead>
-        <tr class="row">
-          <th class="col-8">Quote Name</th>
-          <th class="col-4">Action (Edit/Delete)</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div class="border p-3 mt-3">
+      <h1 class="">Quotes List</h1>
+
+      <div class="table-responsive" style="max-height: 400px; overflow-y: auto; overflow-x: hidden;">
+      <table class="table">
+        <thead>
+          <tr class="row">
+            <th class="col-8 ps-3" style="background-color: gray; z-index: 10;">Quote Name</th>
+            <th class="col-4" style="background-color: gray; z-index: 10;">Action (Edit/Delete)</th>
+          </tr>
+        </thead>
+        <tbody>
         <% @quotes.each do |quote| %>
-          <tr class="row w-100">
-            <td class="col-8"><%= quote.name %></td>
-            <td class="col-4">
-              <%= link_to 'Edit', edit_quote_path(quote), class: 'btn btn-sm btn-primary' %>
-              <%= link_to 'Delete', quote_path(quote), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
-            </td>
+          <tr id="<%= dom_id(quote) %>" class="row w-100 ps-3">
+          <td class="col-8">
+            <%= link_to quote.name, quote_path(quote), data: { turbo_frame: "show_quote" } %>
+          </td>
+          <td class="col-4">
+            <div class="d-flex justify-content-between">
+            <%= link_to 'Edit', edit_quote_path(quote), class: 'btn btn-sm btn-primary', data: { turbo_frame: "_top" } %>
+            <%= button_to 'Delete', quote_path(quote), method: :delete, data: {turbo_confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
+            <%= link_to 'Delete', quote_path(quote), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-danger' %>
+            </div>
+          </td>
           </tr>
         <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+      </div>
+    </div>
     <% else %>
       <%= render "quotes/empty_state" %>
     <% end %>

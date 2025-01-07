@@ -19,6 +19,7 @@ class QuotesController < ApplicationController
   end
 
   def new
+    # debugger
     @quote = Quote.new
   end
 

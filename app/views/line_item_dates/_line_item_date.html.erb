@@ -2,28 +2,33 @@
   <div class="line-item-date">
     <%= turbo_frame_tag dom_id(line_item_date, :edit) do %>
       <div class="line-item-date__header">
-        <h2 class="line-item-date__title">
-        <%= l(line_item_date.date, format: :long) %>
-        </h2>
+        <div class="d-flex justify-content-between align-items-center">
+        <h3 class="line-item-date__title">
+          <%= l(line_item_date.date, format: :long) %>
+        </h3>
 
-        <div class="line-item__actions">
-          <%= button_to "Delete",
-                        [quote, line_item_date, line_item],
-                        method: :delete,
-                        form: { data: { turbo_frame: "_top" } },
-                        class: "btn btn-danger" %>
-          <%= link_to "Edit",
-                      [:edit, quote, line_item_date, line_item],
-                      data: { turbo_frame: "_top" },
-                      class: "btn btn-warning" %>
+        <div class="d-flex gap-2">
+            <%= button_to "Delete Date",
+                [quote, line_item_date],
+                method: :delete,
+                form: { data: { turbo_frame: "_top" } },
+                class: "btn btn-danger" %>
+
+            <%= link_to "Edit Date",
+                        [:edit, quote, line_item_date],
+                        data: { turbo_frame: "_top" },
+                        class: "btn btn-warning" %>
         </div>
       </div>
+        </div>
+
     <% end %>
-      <div class="line-item line-item--header">
-        <div class="line-item__name">Article</div>
-        <div class="line-item__quantity">Quantity</div>
-        <div class="line-item__price">Price</div>
-        <div class="line-item__actions"></div>
+      <div class="line-item line-item-header row">
+        <div class="col-4">Article</div>
+        <div class="col-2">Item Price</div>
+        <div class="col-2">Quantity</div>
+        <div class="col-2">Quantity Price</div>
+        <div class="col-2">Actions</div>
       </div>
 
       <%# In the extract from the logs above, we are querying the line_items table %>

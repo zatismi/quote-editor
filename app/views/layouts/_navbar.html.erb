@@ -56,10 +56,15 @@
       <h3 class="ms-1">Welcome to Quotes</h3>
     </div>
     <div class="col-6 d-flex justify-content-end">
-      <%= link_to "Sign in",
-                  new_user_session_path,
-                  class: "btn btn-success"%>
-      <% end %>
+      <div class="d-flex gap-3">
+        <%= link_to "Sign up",
+          new_registration_path(:user),
+          class: "btn btn-primary"%>
+        <%= link_to "Sign in",
+          new_user_session_path,
+          class: "btn btn-success"%>
+        <% end %>
+      </div>
     </div>
 
   </div>

@@ -1,18 +1,26 @@
-<h2>Forgot your password?</h2>
+<div class="mx-auto mt-5 col-3  d-flex flex-column justify-items-center align-items-center">
+  <p class="text-dark fs-2 fw-bolder">Forgot your password?</p>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
+  <div class="d-flex flex-column justify-items-center w-100">
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
+      <div class="w-100">
+        <div class="form-floating mb-3">
+          <%= f.text_field :email,
+                class: "form-control",
+                id: "floatingInput",
+                placeholder: "name@example.com",
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" } %>
-  </div>
+                autocomplete: "off" %>
+          <label for="floatingInput">Email address</label>
+        </div>
+      </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
+      <%= f.button :submit, "Send me reset password instructions", class: "btn btn-success w-100 py-3" %>
+      <div>
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

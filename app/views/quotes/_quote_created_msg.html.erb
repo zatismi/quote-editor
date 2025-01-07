@@ -1,0 +1,7 @@
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <p>"<%= quote.name %>" is created successfully!</p>
+  <p>Go to the <%= link_to quote.name, quote_path(quote), data: { turbo_frame: "show_quote" } %> quote</p>
+
+
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

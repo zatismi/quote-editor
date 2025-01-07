@@ -1,0 +1,9 @@
+<%# app/views/quotes/update.turbo_stream.erb %>
+
+<%# <%= turbo_stream.replace @quote %> %>
+
+<%= turbo_stream.replace "quote_#{@quote.id}" do %>
+  <%= render partial: "quote", locals: { quote: @quote } %>
+<% end %>
+
+<%# <%= render_turbo_stream_flash_messages %> %>

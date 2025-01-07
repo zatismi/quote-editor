@@ -89,7 +89,7 @@
       <div>
         <h3 class="fs-2 text-body-emphasis">You Have Been With us since</h3>
         <h4><%= current_user.created_at.strftime('%B %d, %Y') %></h4>
-        <p><%= current_user.created_at >= 1.week.ago ? "Over a week" : "Less than a week" %></p>
+        <p><%= (Time.current - current_user.created_at) >= 1.week ? "Over a week" : "Less than a week" %></p>
         <%# <a href="#" class="btn btn-primary">
           Manage Account
         </a> %>

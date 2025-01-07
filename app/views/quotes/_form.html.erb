@@ -1,12 +1,14 @@
 <%= simple_form_for quote, html: { class: "quote form" } do |f| %>
-  <%= form_error_notification(quote) %>
 
-  <%= f.input :name, input_html: { autofocus: true } %>
-  <%= link_to "Cancel", quotes_path, class: "btn btn--light" %>
+  <div class="form-group my-2">
+    <%= f.input :name, input_html: { class: "form-control", autofocus: true } %>
+  </div>
+  <div class="mb-3 text-danger">
+    <%= form_error_notification(quote) %>
+  </div>
 
-  <%# format: :html %>
-  <%= f.submit class: "btn btn--secondary", "data-turbo": false %>
-
-  <%# format: :turbo_stream %>
-  <%# <%= f.submit class: "btn btn--secondary" %>
+  <div class="form-group">
+    <%= link_to "Cancel", quotes_path, class: "btn btn-dark border-light" %>
+    <%= f.submit class: "btn btn-success", "data-turbo": true %>
+  </div>
 <% end %>
