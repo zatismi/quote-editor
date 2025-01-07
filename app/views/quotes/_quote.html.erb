@@ -1,6 +1,6 @@
 <tr id="<%= dom_id(quote) %>" class="row w-100 ps-3">
   <td class="col-8">
-    <%= link_to quote.name, quote_path(quote), data: { turbo_frame: "show_quote" } %>
+    <%= link_to quote.name, quote_path(quote), data: { turbo_frame: "single_quote" } %>
   </td>
   <td class="col-4">
     <div class="d-flex justify-content-between">
