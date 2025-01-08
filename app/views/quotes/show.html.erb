@@ -12,7 +12,7 @@
             <span>Exit Preview</span>
           </span>
           <span class="d-flex align-items-center text-dark px-2 py-1 rounded bg-success">Dates Count: <%= @quote.line_item_dates.count %></span>
-          <span class="d-flex align-items-center text-dark px-2 py-1 rounded" style="background-color: orange;">  Total Price: <%= number_to_currency(@quote.line_item_dates.flat_map(&:line_items).sum { |line_item| line_item.unit_price * line_item.quantity }) %></span>
+          <span class="d-flex align-items-center text-dark px-2 py-1 rounded" style="background-color: orange;">  Total Sheet Price: <%= number_to_currency(@quote.line_item_dates.flat_map(&:line_items).sum { |line_item| line_item.unit_price * line_item.quantity }) %></span>
         </div>
         <%= link_to "New date", new_quote_line_item_date_path(@quote), class: "btn btn-primary" %>
       </div>

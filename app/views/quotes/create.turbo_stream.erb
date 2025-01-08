@@ -1,15 +1,25 @@
-<%# app/views/quotes/create.turbo_stream.erb %>
 <%= turbo_stream.update "show_quote" do %>
- <%= render @quote %>
-<% end %>
-<%= turbo_stream.prepend "quotes_table" do %>
-  <%# <%= render partial: "quote", locals: { quote: @quote } %>
+  <!-- Updates the element with the ID "show_quote" -->
   <%= render @quote %>
+  <!-- Renders the @quote object inside the "show_quote" element -->
 <% end %>
+
+<%= turbo_stream.prepend "quotes_table" do %>
+  <!-- Prepends content to the element with the ID "quotes_table" -->
+  <%# <%= render partial: "quote", locals: { quote: @quote } %>
+  <!-- This line is commented out and would render the "quote" partial with @quote as a local variable -->
+  <%= render @quote %>
+  <!-- Renders the @quote object inside the "quotes_table" element -->
+<% end %>
+
 <%= turbo_stream.update Quote.new do %>
+  <!-- Updates the element with the ID of a new Quote object -->
   <%= link_to "New quote",
     new_quote_path,
     class: "btn btn-primary"
     %>
-<% end%>
+  <!-- Creates a link to the new quote path with the class "btn btn-primary" -->
+<% end %>
+
 <%= render_turbo_stream_flash_messages %>
+<!-- Renders Turbo Stream flash messages -->

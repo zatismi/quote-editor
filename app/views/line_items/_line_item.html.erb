@@ -2,27 +2,27 @@
   <div class="line-item row">
     <div class="col-4">
       <%= line_item.name %>
-      <div class="description">
-        <%= simple_format line_item.description %>
+      <div>
+        <%= simple_format line_item.description, class: "text-info" %>
       </div>
     </div>
-    <div class="line-item__quantity-price col-2">
+    <div class="col-2">
       <%= number_to_currency line_item.unit_price %>
     </div>
-    <div class="line-item__quantity col-2">
+    <div class="col-2">
       <%= line_item.quantity %>
     </div>
-    <div class="line-item__price col-2">
+    <div class="col-2">
       <%= number_to_currency (line_item.quantity * line_item.unit_price) %>
     </div>
-    <div class="line-item__actions col-2 d-flex gap-2">
-      <%= button_to "Delete Item",
-                    [quote, line_item_date, line_item],
-                    method: :delete,
-                    class: "btn btn-danger" %>
-      <%= link_to "Edit Iten",
-                  [:edit, quote, line_item_date, line_item],
-                  class: "btn btn-primary" %>
+    <div class="col-2 d-flex justify-content-center gap-2 mb-1">
+      <%= button_to [quote, line_item_date, line_item], method: :delete, class: "btn btn-danger rounded" do %>
+        <i class="fa-regular fa-trash-can"></i>
+      <% end %>
+      <%= link_to [:edit, quote, line_item_date, line_item], class: "btn btn-warning rounded", style: "height: fit-content" do %>
+        <i class="fa-regular fa-pen-to-square"></i>
+      <% end %>
     </div>
+    <hr class="mb-1">
   </div>
 <% end %>

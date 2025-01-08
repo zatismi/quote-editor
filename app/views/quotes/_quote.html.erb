@@ -1,10 +1,12 @@
 <tr id="<%= dom_id(quote) %>" class="row w-100 ps-3">
   <td class="col-8">
+    <%# This is responsoble of rendering the qupte inside the frane single quote %>
     <%= link_to quote.name, quote_path(quote), data: { turbo_frame: "single_quote" } %>
   </td>
   <td class="col-4">
     <div class="d-flex justify-content-between">
-      <%= link_to 'Edit', edit_quote_path(quote), class: 'btn btn-sm btn-primary', data: { turbo_frame: "_top" } %>
+      <%# This is responsoble of rendering the update form inside the frane single quote %>
+      <%= link_to 'Edit', edit_quote_path(quote), class: 'btn btn-sm btn-primary', data: { turbo_frame: "single_quote" } %>
       <%= button_to 'Delete', quote_path(quote), method: :delete, data: {turbo_confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
       <%= link_to 'Delete', quote_path(quote), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-danger' %>
     </div>

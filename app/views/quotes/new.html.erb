@@ -1,16 +1,16 @@
 <main class="container">
   <%= link_to sanitize("&larr; Back to quotes"), quotes_path, class: "btn border-dark my-3" %>
-
   <div class="header">
     <h1>New quote</h1>
   </div>
-
-  <%= turbo_frame_tag @quote do %>
-    <div class="border border-success p-3 mt-3 text-center">
-      <span class="d-flex align-items-center bg-secondary text-white px-2 py-1" style="border-radius: 5px;">
-      Create new quote
-      </span>
-      <%= render "form", quote: @quote %>
-    </div>
+  <%= turbo_frame_tag "single_quote" do %>
+    <%= turbo_frame_tag @quote do %>
+      <div class="border border-success p-3 mt-3 text-center">
+        <span class="d-flex align-items-center bg-secondary text-white px-2 py-1" style="border-radius: 5px;">
+          Create new quote
+        </span>
+        <%= render "form", quote: @quote %>
+      </div>
+    <% end %>
   <% end %>
 </main>
