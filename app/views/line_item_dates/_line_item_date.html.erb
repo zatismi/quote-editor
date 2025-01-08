@@ -48,8 +48,8 @@
           <% end %>
         </div>
         <% if line_item_date.line_items.any? %>
-          <div class="w-25">
-            <strong>Total:</strong>
+          <div class="w-25 d-flex justify-content-end">
+            <strong>Total:&nbsp;&nbsp;</strong>
             <%= number_to_currency line_item_date.line_items.sum { |item| item.quantity * item.unit_price } %>
           </div>
         <% end %>

@@ -1,11 +1,13 @@
 <%= simple_form_for quote, html: { class: "quote form" } do |f| %>
+  <span class="d-flex align-items-center bg-secondary text-white px-2 py-1" style="border-radius: 5px;">
+    Create new quote
+  </span>
   <div class="form-group my-2">
     <%= f.input :name, input_html: { class: "form-control", autofocus: true } %>
   </div>
   <div class="mb-3 text-danger">
     <%= form_error_notification(quote) %>
   </div>
-
   <div class="form-group">
     <%= link_to "Cancel", quotes_path, class: "btn btn-dark border-light" %>
     <%= f.submit class: "btn btn-success", "data-turbo": true %>

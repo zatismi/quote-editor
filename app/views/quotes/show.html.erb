@@ -19,7 +19,9 @@
       <div class="table-responsive" style="max-height: 350px; overflow-y: auto; overflow-x: hidden;">
         <div id="quote_preview">
           <%= turbo_frame_tag "line_item_dates" do %>
-            <%= render @line_item_dates, quote: @quote %>
+            <% if @line_item_dates.present? %>
+              <%= render @line_item_dates, quote: @quote %>
+            <% end %>
           <% end %>
         </div>
       </div>
