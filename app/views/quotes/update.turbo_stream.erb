@@ -1,5 +1,5 @@
 <%= turbo_stream.prepend "quotes_table" do %>
-  <%= render @quote %>
+  <%= render partial: "quote", locals: { quote: @quote } %>
 <% end %>
 <%= turbo_stream.replace "quote_#{@quote.id}" do %>
   <%= render partial: "xshow", locals: { quote: @quote } %>

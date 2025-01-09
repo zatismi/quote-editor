@@ -1,7 +1,17 @@
 <tr id="<%= dom_id(quote) %>" class="row w-100 ps-3">
   <td class="col-8">
     <%# This is responsoble of rendering the qupte inside the frane single quote %>
-    <%= link_to quote.name, quote_path(quote), data: { turbo_frame: "single_quote" } %>
+    <% message = "" %>
+    <% if quote == get_last_updated_quote %>
+      <% message = " (UPDATED!)" %>
+      <% style = "bg-info text-black" %>
+    <% end %>
+    <%= link_to quote_path(quote), data: { turbo_frame: "single_quote" }, style: "text-decoration: none;" do %>
+      <%= quote.name %>
+      <% if message.present? %>
+        <span class="text-warning"><%= message %></span>
+      <% end %>
+    <% end %>
   </td>
   <td class="col-4">
     <div class="d-flex justify-content-between">

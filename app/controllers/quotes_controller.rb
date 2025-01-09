@@ -1,9 +1,13 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: [ :show, :edit, :update, :destroy ]
 
-  helper_method :get_quote
+  helper_method :get_quote, :get_last_updated_quote
   def get_quote
     @quote
+  end
+
+  def get_last_updated_quote
+    current_company.quotes.order(updated_at: :desc).first
   end
 
   def index
