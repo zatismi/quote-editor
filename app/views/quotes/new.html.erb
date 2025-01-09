@@ -4,8 +4,8 @@
     <h1>New quote</h1>
   </div>
   <%= turbo_frame_tag "single_quote" do %>
-    <div class="border border-success p-3 mt-3 text-center">
+    <%= turbo_frame_tag @quote do %>
       <%= render "form", quote: @quote %>
-    </div>
+    <% end %>
   <% end %>
 </main>
