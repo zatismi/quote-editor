@@ -1,20 +1,19 @@
-<%= turbo_frame_tag "single_quote" do %>
-  <div class="d-flex flex-column justify-content-center align-items-center w-100" style="height: 100%;">
-    <%= simple_form_for quote, html: { class: "quote form w-50" } do |f| %>
-      <% color_dynamic = quote.new_record? ? 'success' : 'warning' %>
-      <h4 class="d-flex align-items-center bg-<%= color_dynamic %>-subtle justify-content-center text-light px-2 py-2 mb-4 rounded">
-        <%= quote.new_record? ? "Create new quote" : "Update quote" %>
-      </h4>
-      <div class="form-group my-2">
-        <%= f.input :name, input_html: { class: "form-control", autofocus: true } %>
-      </div>
-      <div class="mb-3 text-danger">
-        <%= form_error_notification(quote) %>
-      </div>
-      <div class="form-group text-center d-flex flex-column justify-content-center gap-3">
-        <%= f.submit class: "btn btn-#{color_dynamic}", "data-turbo": true %>
-        <%= link_to "Cancel", quotes_path, class: "btn btn-dark border-light" %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+  
+<div class="d-flex flex-column justify-content-center align-items-center w-100" style="height: 100%;">
+  <%= simple_form_for quote, html: { class: "quote form w-50" } do |f| %>
+    <% color_dynamic = quote.new_record? ? 'success' : 'warning' %>
+    <h4 class="d-flex align-items-center bg-<%= color_dynamic %>-subtle justify-content-center text-light px-2 py-2 mb-4 rounded">
+      <%= quote.new_record? ? "Create new quote" : "Update quote" %>
+    </h4>
+    <div class="form-group my-2">
+      <%= f.input :name, input_html: { class: "form-control", autofocus: true } %>
+    </div>
+    <div class="mb-3 text-danger">
+      <%= form_error_notification(quote) %>
+    </div>
+    <div class="form-group text-center d-flex flex-column justify-content-center gap-3">
+      <%= f.submit class: "btn btn-#{color_dynamic}", "data-turbo": true %>
+      <%= link_to "Cancel", quotes_path, class: "btn btn-dark border-light" %>
+    </div>
+  <% end %>
+</div>

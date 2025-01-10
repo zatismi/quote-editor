@@ -1,5 +1,8 @@
 <%= turbo_stream.remove @quote %>
 <%= render_turbo_stream_flash_messages %>
+<%= turbo_stream.update "single_quote" do %>
+  <% render "empty_placeholder" %>
+<% end %>
 <% unless current_company.quotes.exists? %>
   <%= turbo_stream.update "quotes-container" do %>
     <%= render "quotes/empty_state" %>
