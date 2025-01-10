@@ -1,8 +1,8 @@
-<%# File: create.turbo_stream.erb %>
+<!-- File: update.turbo_stream.erb -->
 <%= turbo_stream.prepend "quotes_table" do %>
   <%= render @quote %>
 <% end %>
 <%= render_turbo_stream_flash_messages %>
 <%= turbo_stream.update "single_quote" do %>
-  <% render "xshow" %>
+  <%= render "xshow" %>
 <% end %>

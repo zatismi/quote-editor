@@ -1,0 +1,28 @@
+<%= turbo_frame_tag line_item do %>
+  <div class="line-item row">
+    <div class="col-4">
+      <%= line_item.name %>
+      <div>
+        <%= simple_format line_item.description, class: "text-info" %>
+      </div>
+    </div>
+    <div class="col-2">
+      <%= number_to_currency line_item.unit_price %>
+    </div>
+    <div class="col-2">
+      <%= line_item.quantity %>
+    </div>
+    <div class="col-2">
+      <%= number_to_currency (line_item.quantity * line_item.unit_price) %>
+    </div>
+    <div class="col-2 d-flex justify-content-center gap-2 mb-1">
+      <%= button_to [quote, line_item_date, line_item], method: :delete, class: "btn btn-danger rounded" do %>
+        <i class="fa-regular fa-trash-can"></i>
+      <% end %>
+      <%= link_to [:edit, quote, line_item_date, line_item], class: "btn btn-warning rounded", style: "height: fit-content" do %>
+        <i class="fa-regular fa-pen-to-square"></i>
+      <% end %>
+    </div>
+    <hr class="mb-1">
+  </div>
+<% end %>

@@ -1,45 +1,58 @@
 <%= turbo_frame_tag line_item_date do %>
-  <div class="line-item-date">
+  <div class="line-item-date border my-3 p-3 shadow">
     <%= turbo_frame_tag dom_id(line_item_date, :edit) do %>
       <div class="line-item-date__header">
-        <h2 class="line-item-date__title">
-        <%= l(line_item_date.date, format: :long) %>
-        </h2>
-
-        <div class="line-item__actions">
-          <%= button_to "Delete",
-                        [quote, line_item_date, line_item],
-                        method: :delete,
-                        form: { data: { turbo_frame: "_top" } },
-                        class: "btn btn-danger" %>
-          <%= link_to "Edit",
-                      [:edit, quote, line_item_date, line_item],
-                      data: { turbo_frame: "_top" },
-                      class: "btn btn-warning" %>
+        <div class="d-flex justify-content-between align-items-center">
+          <h3 class="line-item-date__title">
+            <%= l(line_item_date.date, format: :long) %>
+          </h3>
+          <div class="d-flex gap-2">
+            <%= button_to "Delete Date",
+                [quote, line_item_date],
+                method: :delete,
+                form: { data: { turbo_frame: "_top" } },
+                class: "btn btn-outline-danger" %>
+            <%= link_to "Edit Date",
+                        [:edit, quote, line_item_date],
+                        data: { turbo_frame: "_top" },
+                        class: "btn btn-warning" %>
+          </div>
         </div>
       </div>
     <% end %>
-      <div class="line-item line-item--header">
-        <div class="line-item__name">Article</div>
-        <div class="line-item__quantity">Quantity</div>
-        <div class="line-item__price">Price</div>
-        <div class="line-item__actions"></div>
-      </div>
-
-      <%# In the extract from the logs above, we are querying the line_items table %>
-      <%# twice because we have two line item dates, but we would query it n times if we %>
-      <%# had n line item dates. This is because each time we render a new line item date, %>
-      <%# we also perform a request to retrieve the associated line items because of this line: %>
-      <%= turbo_frame_tag nested_dom_id(line_item_date, "line_items") do %>
+    <%# Render the line items frame, regardless of whether there are line items or not %>
+    <%= turbo_frame_tag nested_dom_id(line_item_date, "line_items") do %>
+      <% if line_item_date.line_items.any? %>
+        <div class="line-item line-item-header row my-2 bg-secondary text-dark">
+          <div class="col-4">Article</div>
+          <div class="col-2">Item Price</div>
+          <div class="col-2">Quantity</div>
+          <div class="col-2">Qty Price</div>
+          <div class="col-2 text-center">Actions</div>
+        </div>
         <%= render line_item_date.line_items, quote: quote, line_item_date: line_item_date %>
+      <% else %>
+        <div class="border-top text-center my-2 py-2">
+          <span>No items yet in this date!</span>
+        </div>
       <% end %>
-      <%= turbo_frame_tag nested_dom_id(line_item_date, LineItem.new) %>
-
-      <div class="line-item-date__footer">
-        <%= link_to "Add item",
-                    [:new, quote, line_item_date, :line_item],
-                    data: { turbo_frame: nested_dom_id(line_item_date, LineItem.new) },
-                    class: "btn btn-primary" %>
+    <% end %>
+    <%= turbo_frame_tag nested_dom_id(line_item_date, LineItem.new) %>
+    <div class="line-item-date__footer">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex gap-0 w-100">
+          <%= link_to new_quote_line_item_date_line_item_path(quote, line_item_date),
+            data: { turbo_frame: nested_dom_id(line_item_date, LineItem.new) },
+            class: "btn btn-primary #{'w-100' unless line_item_date.line_items.any?}" do %>
+            <i class="fa-regular fa-file-circle-plus"></i> Add Item
+          <% end %>
+        </div>
+        <% if line_item_date.line_items.any? %>
+          <div class="w-25 d-flex justify-content-end">
+            <strong>Total:&nbsp;&nbsp;</strong>
+            <%= number_to_currency line_item_date.line_items.sum { |item| item.quantity * item.unit_price } %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

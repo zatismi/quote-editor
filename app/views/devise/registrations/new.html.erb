@@ -1,27 +1,46 @@
-<%# sigup %>
+<%# signup %>
+<div class="mx-auto col-3 mt-5 d-flex flex-column justify-items-center align-items-center">
+  <p class="text-dark fs-2 fw-bolder">Sign up</p>
 
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs form--group" style="width: 100px;">
-    <%= f.input :email,
+  <div class="d-flex flex-column justify-items-center w-100">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+      <div class="w-100">
+        <div class="form-floating mb-3">
+          <%= f.text_field :email,
+                class: "form-control",
+                id: "floatingInput",
+                placeholder: "name@example.com",
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email", style: "background-color: cyan" } %>
-    <%= f.input :password,
+                autocomplete: "off" %>
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <%= f.password_field :password,
+                class: "form-control",
+                id: "floatingPassword",
+                placeholder: "Password",
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating mb-3">
+          <%= f.password_field :password_confirmation,
+                class: "form-control",
+                id: "floatingPasswordConfirm",
+                placeholder: "Confirm Password",
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+                input_html: { autocomplete: "off" } %>
+          <label for="floatingPasswordConfirm">Confirm Password</label>
+        </div>
+      </div>
 
-  <div class="btn btn--primary">
-    <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Sign up", class: "btn btn-primary w-100 py-3" %>
+      <div>
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
