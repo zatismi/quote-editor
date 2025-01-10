@@ -1,20 +1,31 @@
-<%= simple_form_for [quote, line_item_date, line_item],
-                    html: { class: "form line-item line-item--form" } do |f| %>
-
-  <%= form_error_notification(line_item) %>
-
-  <%= f.input :name,
-              wrapper_html: { class: "line-item__name" },
-              input_html: { autofocus: true } %>
-  <%= f.input :quantity,
-              wrapper_html: { class: "line-item__quantity" } %>
-  <%= f.input :unit_price,
-              wrapper_html: { class: "line-item__price" } %>
-  <%= f.input :description,
-              wrapper_html: { class: "line-item__description" } %>
-
-  <div class="line-item__actions">
-    <%= link_to "Cancel", quote_path(quote), class: "btn btn--light" %>
-    <%= f.submit class: "btn btn-dark" %>
-  </div>
-<% end %>
+<h3 class="form-title text-center p-2">Create New Line Item</h3>
+<div class="d-flex flex-row justify-content-center align-items-center w-100 gap-3 m-2">
+  <%= simple_form_for [quote, line_item_date, line_item],
+                      html: { class: "form line-item line-item--form" } do |f| %>
+    <%= form_error_notification(line_item) %>
+    <div class="form-group w-100">
+      <%= f.input :name,
+                  label_html: { class: "form-label" },
+                  input_html: { class: "form-control", autofocus: true } %>
+    </div>
+    <div class="form-group w-100">
+      <%= f.input :quantity,
+                  label_html: { class: "form-label" },
+                  input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group w-100">
+      <%= f.input :unit_price,
+                  label_html: { class: "form-label" },
+                  input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group w-100">
+      <%= f.input :description,
+                  label_html: { class: "form-label" },
+                  input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-actions w-100 gap-2 m-3">
+      <%= f.submit class: "btn btn-success" %>
+      <%= link_to "Cancel", quote_path(quote), class: "btn btn-outline-secondary" %>
+    </div>
+  <% end %>
+</div>
