@@ -32,6 +32,7 @@ class QuotesController < ApplicationController
     @quote = current_company.quotes.build(quote_params)
 
     if @quote.save
+      @quotes = current_user.company.quotes
       respond_to do |format|
         format.html { redirect_to quotes_path, notice: "HTML: Quote was successfully created." }
         format.turbo_stream { flash.now[:notice] = "STREAM: Quote was successfully created." }
@@ -57,6 +58,7 @@ class QuotesController < ApplicationController
     # if @quote.update(quote_params)
     #   redirect_to quotes_path, notice: "Quote was successfully updated."
     if @quote.update(quote_params)
+      @quotes = current_user.company.quotes
       respond_to do |format|
         format.html { redirect_to quotes_path, notice: "Quote was successfully updated." }
         format.turbo_stream { flash.now[:notice] = "Quote was successfully updated." }
