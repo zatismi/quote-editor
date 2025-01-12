@@ -2,8 +2,8 @@
 <tr id="<%= dom_id(quote) %>" class="row w-100 ps-3">
   <td class="col-8">
     <% message = "" %>
-    <% if quote == get_last_updated_quote %>
-      <% message = " (UPDATED!)" %>
+    <% if quote == get_last_updated_quote && quote.created_at != quote.updated_at %>
+      <% message = " (LAST UPDATED!)" %>
       <% style = "bg-info text-black" %>
     <% end %>
     <%= link_to quote_path(quote), data: { turbo_frame: "single_quote" }, style: "text-decoration: none;" do %>
