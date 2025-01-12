@@ -6,3 +6,6 @@
 <%= turbo_stream.update "single_quote" do %>
   <%= render "xshow" %>
 <% end %>
+<%= turbo_stream.update "quotes" do %>
+  <%= render "quotes/quotes_list" %>
+<% end %>

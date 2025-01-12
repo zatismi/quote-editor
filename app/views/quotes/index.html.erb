@@ -1,28 +1,32 @@
-<% if @quotes.any? %>
-  <div id="quotes-container" class="container"> <!-- Added id="quotes-container" -->
-    <div class="header mt-3">
-      <div class="row">
-        <div class="col-12 col-lg-6">
-          <div class="shadow-sm p-3 my-3 d-flex flex-column justify-content-center"
+<%# <% if @quotes.any? %> %>
+<div id="quotes-container" class="container"> <!-- Added id="quotes-container" -->
+  <div class="header mt-3">
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <div class="shadow-sm p-3 my-3 d-flex flex-column justify-content-center"
           style="height: 500px; border: 1px dashed #beae94">
-            <%= turbo_frame_tag "single_quote" do %>
-              <%= render "quotes/empty_placeholder" %>
-            <% end %>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6">
-          <%= turbo_frame_tag "quotes" do %>
+          <%= turbo_frame_tag "single_quote" do %>
             <% if @quotes.any? %>
-              <%= render "quotes/quotes_list" %>
+              <%= render "quotes/empty_placeholder" %>
             <% else %>
               <%= render "quotes/empty_state" %>
             <% end %>
           <% end %>
         </div>
       </div>
+      <div class="col-12 col-lg-6">
+        <%= turbo_frame_tag "quotes" do %>
+          <% if @quotes.any? %>
+            <%= render "quotes/quotes_list" %>
+          <% else %>
+            <%= render "quotes/empty_state" %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-<% else %>
-  <%# Check redandency of this condition later line 1-15 are the same %>
-  <%= render "quotes/empty_state" %>
-<% end %>
+</div>
+<%# <% else %> %>
+<%# Check redandency of this condition later line 1-15 are the same %>
+<%# <%= render "quotes/empty_state" %> %>
+<%# <% end %> %>
