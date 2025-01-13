@@ -1,3 +1,4 @@
+// FETCHING API DATA WITH STIMULUS
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
@@ -24,7 +25,7 @@ export default class extends Controller {
 
             // Update the weather description in the weather target
             const cityName = data.name;
-            this.weatherTarget.innerHTML = `The weather in <span class="text-warning">${cityName}</span> is <span class="text-warning">${weatherDescription}</span> today!`;
+            this.weatherTarget.innerHTML = `The weather in <span class="text-warning">${cityName}</span> is <span class="text-warning">${weatherDescription}</span> today!<br><span class="text-info">Refresh page for updated weather data.</span>`;
           } catch (error) {
             console.error("Error fetching weather data:", error);
             this.weatherTarget.textContent = "Unable to get weather data.";

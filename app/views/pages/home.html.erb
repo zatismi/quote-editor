@@ -4,7 +4,12 @@
     <%# <i class="fa-solid fa-pepper-hot"></i> %>
     <% # Display the count of quotes for the current user %>
     <% if current_user.company.quotes.count == 0 %>
-      <%= render "quotes/empty_state" %>
+      <div
+          class="container"
+          data-controller="no-quotes"
+          data-no-quotes-quotes-count-value="<%= current_user.company.quotes.count %>"
+          data-no-quotes-redirect-path-value="<%= quotes_path %>">
+      </div>
     <% else %>
       <%#= "You have #{current_user.company.quotes.count} #{'quote'.pluralize(current_user.company.quotes.count)}" %>
       <% # Variables scoped to the current user's quotes %>
