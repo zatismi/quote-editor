@@ -23,7 +23,8 @@ export default class extends Controller {
             const weatherDescription = data.weather[0].description;
 
             // Update the weather description in the weather target
-            this.weatherTarget.innerHTML = `The weather is <span class="text-warning">${weatherDescription}</span> today!`;
+            const cityName = data.name;
+            this.weatherTarget.innerHTML = `The weather in <span class="text-warning">${cityName}</span> is <span class="text-warning">${weatherDescription}</span> today!`;
           } catch (error) {
             console.error("Error fetching weather data:", error);
             this.weatherTarget.textContent = "Unable to get weather data.";
