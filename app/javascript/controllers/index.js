@@ -21,3 +21,7 @@ application.register("hello-user", HelloUserController)
 // ✅ My Implementation to see how to fetch and use API weather data
 import WeatherController from "./weather_controller"
 application.register("weather", WeatherController)
+
+// ✅ Redirecting page from Index to Quotes when no quotes are present
+import NoQuotesController from "./no_quotes_controller";
+application.register("no-quotes", NoQuotesController);

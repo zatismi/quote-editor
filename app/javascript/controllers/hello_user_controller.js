@@ -1,3 +1,5 @@
+// AUTO TOGGLING TEXTS AND SENDING DATA FROM BACKEND TO FRONTEND WITH STIMULUS
+
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {

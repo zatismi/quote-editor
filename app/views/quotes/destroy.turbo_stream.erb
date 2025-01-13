@@ -4,7 +4,10 @@
   <% render "empty_placeholder" %>
 <% end %>
 <% unless current_company.quotes.exists? %>
-  <%= turbo_stream.update "quotes-container" do %>
+  <%= turbo_stream.update "single_quote" do %>
     <%= render "quotes/empty_state" %>
+  <% end %>
+  <%= turbo_stream.update "quotes" do %>
+    <%= render "quotes/empty_quotes_list_msg" %>
   <% end %>
 <% end %>

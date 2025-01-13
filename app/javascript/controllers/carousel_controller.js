@@ -1,4 +1,4 @@
-// TODO: Implement carousel controller
+// CAROUSEL AUTO SLIDE FUNCTIONALITY WITH STIMULUS
 
 import { Controller } from "@hotwired/stimulus"
 
