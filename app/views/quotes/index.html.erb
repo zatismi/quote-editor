@@ -1,6 +1,13 @@
-<div id="quotes-container" class="container"> <!-- Added id="quotes-container" -->
+<div id="quotes-container" class="container" data-controller="hello-user">
   <div class="header mt-3">
     <div class="row">
+      <div class="col-12">
+        <!-- Set data attribute for user name -->
+        <h3 data-hello-user-target="message" data-user-name="<%= current_user.name %>">Hello User</h3>
+      </div>
+      <div data-controller="weather">
+        <span data-weather-target="weather"></span>
+      </div>
       <div class="col-12 col-lg-6">
         <div class="shadow-sm p-3 my-3 d-flex flex-column justify-content-center"
           style="height: 500px; border: 1px dashed #beae94">

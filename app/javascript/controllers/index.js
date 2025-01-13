@@ -4,6 +4,7 @@
 
 import { application } from "./application"
 
+// ✅ Done
 import CarouselController from "./carousel_controller"
 application.register("carousel", CarouselController)
 
@@ -12,3 +13,11 @@ application.register("color-theme", ColorThemeController)
 
 import ToastController from "./toast_controller"
 application.register("toast", ToastController)
+
+// ✅ My Implementation to see how it works with sending user info from backend to frontend
+import HelloUserController from "./hello_user_controller"
+application.register("hello-user", HelloUserController)
+
+// ✅ My Implementation to see how to fetch and use API weather data
+import WeatherController from "./weather_controller"
+application.register("weather", WeatherController)
