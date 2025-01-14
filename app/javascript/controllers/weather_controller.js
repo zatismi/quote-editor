@@ -12,12 +12,18 @@ export default class extends Controller {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
+          // const latitude = position.coords.latitude;
+          // const longitude = position.coords.longitude;
 
-          const apiKey = "f63e12e4c7f22c4b3c225c9b1ec5208d"; // Replace with your API key
-          const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+          // const apiKey = "f63e12e4c7f22c4b3c225c9b1ec5208d"; // Replace with your API key
+          // const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
+          // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+          const weatherApiUrl = new URL("https://api.openweathermap.org/data/2.5/weather")
+          weatherApiUrl.searchParams.set('lat', position.coords.latitude);
+          weatherApiUrl.searchParams.set('lon', position.coords.longitude);
+          weatherApiUrl.searchParams.set('appid', "f63e12e4c7f22c4b3c225c9b1ec5208d");
+          weatherApiUrl.searchParams.set('units', "metric");
           try {
             const response = await fetch(weatherApiUrl);
             const data = await response.json();
