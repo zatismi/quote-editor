@@ -21,6 +21,14 @@
           <%= turbo_frame_tag "line_item_dates" do %>
             <% if @line_item_dates.present? %>
               <%= render @line_item_dates, quote: @quote %>
+            <% else %>
+              <div class="d-flex flex-column align-items-center justify-content-center">
+                <div class="d-flex flex-row align-items-center justify-content-center">
+                  <h3 class="text-center" style="margin-right: 30px">No Dates yet, start creating Dates</h3>
+                  <i class="fa-regular fa-arrow-up-long fa-rotate-by fa-2xl"style="--fa-rotate-angle: 45deg; padding-left: 30px; padding-bottom: 30px; color: Tomato;"></i>
+                </div>
+                <%# <%= link_to "New date", new_quote_line_item_date_path(@quote), class: "btn btn-primary w-100" %>
+              </div>
             <% end %>
           <% end %>
         </div>
