@@ -1,0 +1,11 @@
+<div class="tag-container m-2 rounded" style="position: absolute; top: 0px; right: 0px; z-index: 10;">
+  <% if line_item.quantity > 10 %>
+    <!-- No tag, nothing will be rendered -->
+  <% elsif line_item.quantity >= 5 %>
+    <div class="tag bg-light bg-opacity-50 p-1 rounded">Just Few Available</div>
+  <% elsif line_item.quantity >= 1 %>
+    <div class="tag bg-warning bg-opacity-50 p-1 rounded">Only <%= line_item.quantity %> Available</div>
+  <% else %>
+    <div class="tag sold-out bg-danger bg-opacity-50 p-1 rounded">Sold Out</div>
+  <% end %>
+</div>

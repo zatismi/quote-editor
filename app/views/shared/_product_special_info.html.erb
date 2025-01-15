@@ -1,0 +1,9 @@
+<div class="tag-container text-dark m-2" style="position: absolute; top: 0px; left: 0px; z-index: 10;">
+  <% if line_item.description.downcase.include?("limited") %>
+    <div class="bg-success p-1 rounded bg-opacity-50">LIMITED EDITION</div>
+  <% elsif line_item.description.downcase.include?("no battery") %>
+    <div class="bg-info p-1 rounded bg-opacity-50">NO BATTERY INCLUDED!</div>
+  <% elsif line_item.description.downcase.include?("no money guaranteed") %>
+    <div class="bg-info p-1 rounded bg-opacity-50">NO MONEY GUARANTEED!</div>
+  <% end %>
+</div>
