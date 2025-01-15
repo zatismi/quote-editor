@@ -1,6 +1,5 @@
-  
 <div class="border-top text-center my-2 py-2">
-  <span>No items yet in this date!</span>
+  <span>No Products yet in this List!</span>
 </div>
 <%= turbo_frame_tag nested_dom_id(line_item_date, LineItem.new) %>
 <div class="line-item-date__footer">
@@ -9,7 +8,7 @@
       <%= link_to new_quote_line_item_date_line_item_path(quote, line_item_date),
             data: { turbo_frame: nested_dom_id(line_item_date, LineItem.new) },
             class: "btn btn-primary #{'w-100' unless line_item_date.line_items.any?}" do %>
-        <i class="fa-regular fa-file-circle-plus"></i> Add Item
+        <i class="fa-regular fa-file-circle-plus"></i> Add Product
       <% end %>
     </div>
   </div>

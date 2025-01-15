@@ -6,13 +6,17 @@
           <h3 class="line-item-date__title">
             <%= l(line_item_date.date, format: :long) %>
           </h3>
+          <%= link_to "Visit Shop",
+              quote_line_item_date_line_items_path(quote, line_item_date),
+              class: "btn btn-info",
+              target: "_blank" %>
           <div class="d-flex gap-2">
-            <%= button_to "Delete Date",
+            <%= button_to "Delete Product List",
                 [quote, line_item_date],
                 method: :delete,
-                form: { data: { turbo_frame: "_top" } },
+                form: { data: { turbo_frame: "_top", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } },
                 class: "btn btn-outline-danger" %>
-            <%= link_to "Edit Date",
+            <%= link_to "Edit Product List Date",
                         [:edit, quote, line_item_date],
                         data: { turbo_frame: "_top" },
                         class: "btn btn-warning" %>
@@ -24,8 +28,8 @@
     <%= turbo_frame_tag nested_dom_id(line_item_date, "line_items") do %>
       <% if line_item_date.line_items.any? %>
         <div class="line-item line-item-header row my-2 bg-secondary text-dark">
-          <div class="col-4">Article</div>
-          <div class="col-2">Item Price</div>
+          <div class="col-4">Product/Description</div>
+          <div class="col-2">Price/1-piece</div>
           <div class="col-2">Quantity</div>
           <div class="col-2">Qty Price</div>
           <div class="col-2 text-center">Actions</div>
@@ -33,7 +37,7 @@
         <%= render line_item_date.line_items, quote: quote, line_item_date: line_item_date %>
       <% else %>
         <div class="border-top text-center my-2 py-2">
-          <span>No items yet in this date!</span>
+          <span>No Products yet in this List!</span>
         </div>
       <% end %>
     <% end %>
@@ -44,7 +48,7 @@
           <%= link_to new_quote_line_item_date_line_item_path(quote, line_item_date),
             data: { turbo_frame: nested_dom_id(line_item_date, LineItem.new) },
             class: "btn btn-primary #{'w-100' unless line_item_date.line_items.any?}" do %>
-            <i class="fa-regular fa-file-circle-plus"></i> Add Item
+            <i class="fa-regular fa-file-circle-plus"></i> Add Product
           <% end %>
         </div>
         <% if line_item_date.line_items.any? %>

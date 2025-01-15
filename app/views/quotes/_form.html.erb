@@ -1,9 +1,8 @@
-  
 <div class="d-flex flex-column justify-content-center align-items-center w-100" style="height: 100%;">
   <%= simple_form_for quote, html: { class: "quote form w-50" } do |f| %>
     <% color_dynamic = quote.new_record? ? 'success' : 'warning' %>
     <h4 class="d-flex align-items-center bg-<%= color_dynamic %>-subtle justify-content-center text-light px-2 py-2 mb-4 rounded">
-      <%= quote.new_record? ? "Create new quote" : "Update quote" %>
+      <%= quote.new_record? ? "Create New Shop" : "Change Shop Title" %>
     </h4>
     <div class="form-group my-2">
       <%= f.input :name, input_html: { class: "form-control", autofocus: true } %>

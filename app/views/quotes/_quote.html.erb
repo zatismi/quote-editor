@@ -1,9 +1,9 @@
 <%# File: _quote.html.erb %>
 <tr id="<%= dom_id(quote) %>" class="row w-100 ps-3">
   <td class="col-8">
-    <% message = "" %>
+    <% message = "SHOP" %>
     <% if quote == get_last_updated_quote && quote.created_at != quote.updated_at %>
-      <% message = " (LAST UPDATED!)" %>
+      <% message = "SHOP (LAST UPDATED!)" %>
       <% style = "bg-info text-black" %>
     <% end %>
     <%= link_to quote_path(quote), data: { turbo_frame: "single_quote" }, style: "text-decoration: none;" do %>
@@ -15,8 +15,8 @@
   </td>
   <td class="col-4">
     <div class="d-flex justify-content-around">
-      <%= link_to 'Edit Quote', edit_quote_path(quote), class: 'btn btn-sm btn-primary', data: { turbo_frame: "single_quote" } %>
-      <%= button_to 'Delete Quote', quote_path(quote), method: :delete, data: {turbo_confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
+      <%= link_to 'Edit Shop Title', edit_quote_path(quote), class: 'btn btn-sm btn-primary', data: { turbo_frame: "single_quote" } %>
+      <%= button_to 'Delete Shop', quote_path(quote), method: :delete, data: {turbo_confirm: 'Are you sure? Deleting a shop is UNDOABLE!'}, class: 'btn btn-sm btn-danger' %>
     </div>
   </td>
 </tr>

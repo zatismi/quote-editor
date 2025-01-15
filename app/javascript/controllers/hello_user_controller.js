@@ -73,7 +73,7 @@ export default class extends Controller {
         }
       }
 
-      setTimeout(type, isDeleting ? 100 : 200);
+      setTimeout(type, isDeleting ? 20 : 1000);
     };
 
     type();

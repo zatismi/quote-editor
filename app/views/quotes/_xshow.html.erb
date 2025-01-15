@@ -20,13 +20,13 @@
         <%= link_to "X", quotes_path, class: "btn btn-dark btn-sm me-2 text-light rounded-1", style:"width: 30px; padding: 0; font-size: 14px;" %>
         <span>Exit Preview</span>
       </span>
-      <span class="d-flex align-items-center text-dark px-2 py-1 rounded bg-success">Dates Count: <%= @quote.line_item_dates.count %></span>
+      <span class="d-flex align-items-center text-dark px-2 py-1 rounded bg-success">Product Lists Count: <%= @quote.line_item_dates.count %></span>
       <span class="d-flex align-items-center text-dark px-2 py-1 rounded" style="background-color: orange;">
-        Total Sheet Price:
+        Total Product Lists Price:
         <%= number_to_currency(@quote.line_item_dates.flat_map(&:line_items).sum { |line_item| line_item.unit_price * line_item.quantity }) %>
       </span>
     </div>
-    <%= link_to "New date", new_quote_line_item_date_path(@quote), class: "btn btn-primary" %>
+    <%= link_to "New Product List", new_quote_line_item_date_path(@quote), class: "btn btn-primary" %>
   </div>
   <div class="table-responsive w-100" style="max-height: 350px; overflow-y: auto; overflow-x: hidden;">
     <div id="quote_preview w-100">

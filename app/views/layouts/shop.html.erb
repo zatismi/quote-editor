@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Shop Page" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  </head>
+  <body class="p-0 m-0" style="background-color: white;">
+    <%= render "layouts/shop_navbar", locals: { style: "background-color: white;" } %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "layouts/flash" %>
+    <% end %>
+    <div id="flash"></div>
+    <%= yield %>
+    <%= render "layouts/shop_footer", locals: { style: "height: 100vh;" } %>
+  </body>
+</html>

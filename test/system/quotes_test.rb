@@ -36,7 +36,7 @@ class QuotesTest < ApplicationSystemTestCase
     visit quotes_path
     click_on "Edit", match: :first
     fill_in "Name", with: "Updated quote"
-    click_on "Update quote"
+    click_on "Update Shop Title"
     assert_selector "a", text: "Updated quote"
   end
 

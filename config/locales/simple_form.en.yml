@@ -22,11 +22,11 @@ en:
   helpers:
     submit:
       quote:
-        create: Create quote
-        update: Update quote
+        create: Create New Shop
+        update: Update Shop Title
       line_item:
-        create: Create item
-        update: Update item
+        create: Create New Product
+        update: Update Product Details
       line_item_date:
-        create: Create date
-        update: Update date
+        create: Create Product List
+        update: Update Product List Name

@@ -1,0 +1,46 @@
+Quotes = Shops
+Date = Product List
+Line Item = Product
+
+Shops List
+  CRUD: Shop
+    Create a new Shop
+    View Shop Content (Product Lists, and each Product List own Products)
+    Edit Shop Title
+    Delete Shop
+
+Product List
+  CRUD: Product List
+    Create a Product List
+    View Product List Items (Products)
+    Edit Prodcut List Date
+    Delete Product List
+
+Product
+  CRUD: Product
+    Create Product:
+      Title
+      Description
+      Items Available
+      Item Price
+    View Product
+    Edit Product Details
+      Title
+      Description
+      Items Available
+      Item Price
+    Delete Product
+
+
+Possible Features:
+  Additing Tags to Products:
+    Limited Edition
+    Only few available / Only #Count Available: if products are =< #Count
+    Discount / Sale
+    Black Friday
+    Limited Deal
+
+
+How it works now:
+  Visiting the Shop URL will redirect to Products "line_items"
+  Possible change: view the Shop in the Shop "Date" URL
