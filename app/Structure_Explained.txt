@@ -1,20 +1,20 @@
 Quotes = Shops
-Date = Product List
+Date = Product Collection
 Line Item = Product
 
 Shops List
   CRUD: Shop
     Create a new Shop
-    View Shop Content (Product Lists, and each Product List own Products)
+    View Shop Content (Product Collection, and each Product Collection own Products)
     Edit Shop Title
     Delete Shop
 
-Product List
-  CRUD: Product List
-    Create a Product List
-    View Product List Items (Products)
-    Edit Prodcut List Date
-    Delete Product List
+Product Collection
+  CRUD: Product Collection
+    Create a Product Collection
+    View Product Collection Items (Products)
+    Edit Prodcut Collection Date
+    Delete Product Collection
 
 Product
   CRUD: Product

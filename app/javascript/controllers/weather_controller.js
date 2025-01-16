@@ -12,12 +12,6 @@ export default class extends Controller {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
-          // const latitude = position.coords.latitude;
-          // const longitude = position.coords.longitude;
-
-          // const apiKey = "f63e12e4c7f22c4b3c225c9b1ec5208d"; // Replace with your API key
-          // const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-
           // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
           const weatherApiUrl = new URL("https://api.openweathermap.org/data/2.5/weather")
           weatherApiUrl.searchParams.set('lat', position.coords.latitude);
@@ -29,7 +23,6 @@ export default class extends Controller {
             const data = await response.json();
             const weatherDescription = data.weather[0].description;
 
-            // Update the weather description in the weather target
             const cityName = data.name;
             this.weatherTarget.innerHTML = `The weather in <span class="text-warning">${cityName}</span> is <span class="text-warning">${weatherDescription}</span> today!<br><span class="text-info">Refresh page for updated weather data.</span>`;
           } catch (error) {

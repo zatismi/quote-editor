@@ -2,7 +2,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static values = { quotesCount: Number, redirectPath: String }
+  static values = { shopsCount: Number, redirectPath: String }
 
   connect() {
     if (this.quotesCountValue === 0) {
