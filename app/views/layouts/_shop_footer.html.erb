@@ -1,38 +1,28 @@
 <div class="container-fluid d-flex flex-column justify-content-center align-items-center w-100" style="background-color: black;">
   <div class="d-flex flex-column flex-md-row justify-content-between footer-body col-9 my-5">
     <div class="left-column col-12 col-md-4">
-      <h5 href="#link1" class="text-light">Links</h5>
+      <h5 href="#link1" class="text-info">Links</h5>
       <ul class="list-unstyled">
-        <li><a href="#link1" class="">Impressum</a></li>
-        <li><a href="#link2" class="">About Us</a></li>
-        <li><a href="#link3" class="">Contact Us</a></li>
-        <li><a href="#link4" class="">Go to Shops Dashboard</a></li>
-        <li><a href="#top" class="">Go to Top</a></li>
+        <li><a href="#link1" class="text-primary">Impressum</a></li>
+        <li><a href="#link2" class="text-primary">About Us</a></li>
+        <li><a href="#link3" class="text-primary">Contact Us</a></li>
+        <li><a href="#link4" class="text-primary">Go to Shops Dashboard</a></li>
+        <li><a href="#top" class="text-primary">Go to Top</a></li>
       </ul>
     </div>
     <div class="middle-column col-12 col-md-4">
-      <h5 class="text-light">Services</h5>
-      <ul class="list-unstyled text-light">
+      <h5 class="text-info">Services</h5>
+      <ul class="list-unstyled text-primary">
         <li>Company Support</li>
         <li>Tel.: +49 123 123 123 12</li>
         <li>info@<%= @quote.name.downcase.gsub(' ', '-') %>.com</li>
       </ul>
     </div>
-    <div class="right-column col-12 col-md-4 d-flex justify-content-end align-items-start text-info">
-      <div class="col-3 bg-dark text-center py-2 text-light" style="width: 100px;">
-        <h5 class="m-0 p-0 d-flex justify-content-center align-items-center" style="min-height: 60px;"><%= @quote.name %></h5>
+    <div class="right-column col-12 col-md-4 d-flex justify-content-end align-items-start">
+      <div class="col-3 bg-primary text-dark text-center py-2 text-light" style="width: 100px;">
+        <h5 class="logo m-0 mt-3 d-flex justify-content-center align-items-center" style="min-height: 60px;"><%= @quote.name %></h5>
       </div>
     </div>
   </div>
   <p class="text-secondary">&copy; <%= Time.now.year %> <%= @quote.name %></p>
 </div>
-<style>
-  a {
-    text-decoration: none;
-    color: white;
-  }
-  a:hover {
-    text-decoration: underline;
-    /* color: darkcyan; */
-  }
-</style>

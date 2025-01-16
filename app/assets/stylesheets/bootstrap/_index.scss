@@ -1,7 +1,20 @@
-// https://getbootstrap.com/docs/5.3/customize/sass/#importing
-// node_modules/bootstrap/scss/_variables.scss
-
-
 @import "variables";
 @import "bootstrap/scss/bootstrap";
+
+@import 'typography';
 @import "custom";
+
+////////////////////////////////////////////////////////////////
+// Try later to switch between themes
+// .bootstrap-theme {
+//   @import "bootstrap/scss/bootstrap";
+// }
+
+// // White theme
+// .white-theme {
+//   @import "white_theme";
+// }
+
+// More info to read:
+// https://getbootstrap.com/docs/5.3/customize/sass/#importing
+// node_modules/bootstrap/scss/_variables.scss

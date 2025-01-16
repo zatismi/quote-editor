@@ -1,108 +1,52 @@
-//
-// Options
-//
-
-// https://getbootstrap.com/docs/5.3/customize/options/
-
-$enable-rounded: false; // was true
-$enable-shadows: false;
-// $enable-cssgrid: true;
-// $enable-gradients: true;
-// $enable-negative-margins: true;
-
-// $min-contrast-ratio: 3;
-
-//
 // Colors
-//
+$primary: #ffffff; // White
+$secondary: #000000; // Black
+$third-1: #f5f5f5; // Light gray
+$third-2: #cccccc; // Gray
+$third-3: #7f7f7f; // Dark gray
 
-// https://github.com/morhetz/gruvbox
+// Text Colors
+$text-primary: #212529; // Dark gray
+$text-secondary: #6c757d; // Medium gray
+$text-muted: #adb5bd; // Light gray
+$text-light: #f8f9fa; // Very light gray
+$text-dark: #334d5b; // Very dark gray
 
-$gruvbox: (
-  "dark0_hard": #1d2021,
-  "dark0": #282828,
-  "dark0_soft": #32302f,
-  "dark1": #3c3836,
-  "dark2": #504945,
-  "dark3": #665c54,
-  "dark4": #7c6f64,
-  "dark4_256": #7c6f64,
+$success: #00ffbb;
+$info: #00e2fb;
+$warning: #ffc107;
+$danger: #ff5e6e;
+$light: #f7ffaf;
+$dark: #252525;
 
-  "gray_245": #928374,
-  "gray_244": #928374,
+// Tag Backgrounds
+$bg-tag-sold: #ffcccc; // Light red
+$bg-tag-few: #ffd966; // Light gold
+$bg-tag-less: #ffffcc; // Light yellow
+$bg-tag-limited: #d9f5d9; // Light green
+$bg-tag-guaranty: #e0ffff; // Cyan
 
-  "light0_hard": #f9f5d7,
-  "light0": #fbf1c7,
-  "light0_soft": #f2e5bc,
-  "light1": #ebdbb2,
-  "light2": #d5c4a1,
-  "light3": #bdae93,
-  "light4": #a89984,
-  "light4_256": #a89984,
-
-  "bright_red": #fb4934,
-  "bright_green": #b8bb26,
-  "bright_yellow": #fabd2f,
-  "bright_blue": #83a598,
-  "bright_purple": #d3869b,
-  "bright_aqua": #8ec07c,
-  "bright_orange": #fe8019,
-
-  "neutral_red": #cc241d,
-  "neutral_green": #98971a,
-  "neutral_yellow": #d79921,
-  "neutral_blue": #458588,
-  "neutral_purple": #b16286,
-  "neutral_aqua": #689d6a,
-  "neutral_orange": #d65d0e,
-
-  "faded_red": #9d0006,
-  "faded_green": #79740e,
-  "faded_yellow": #b57614,
-  "faded_blue": #076678,
-  "faded_purple": #8f3f71,
-  "faded_aqua": #427b58,
-  "faded_orange": #af3a03,
-);
-
-$white: map-get($gruvbox, "light0_hard");
-$gray-100: map-get($gruvbox, "light1"); // light
-$gray-200: map-get($gruvbox, "light2");
-$gray-300: map-get($gruvbox, "light3");
-$gray-400: map-get($gruvbox, "light4");
-$gray-500: map-get($gruvbox, "gray_245");
-$gray-600: map-get($gruvbox, "dark4"); // secondary
-$gray-700: map-get($gruvbox, "dark3");
-$gray-800: map-get($gruvbox, "dark2");
-$gray-900: map-get($gruvbox, "dark1"); // dark
-$black: map-get($gruvbox, "dark0_hard");
-
-$blue: map-get($gruvbox, "bright_blue");
-$indigo: map-get($gruvbox, "faded_blue");
-$purple: map-get($gruvbox, "bright_purple");
-$pink: map-get($gruvbox, "faded_purple"); // code
-$red: map-get($gruvbox, "bright_red");
-$orange: map-get($gruvbox, "bright_orange");
-$yellow: map-get($gruvbox, "bright_yellow");
-$green: map-get($gruvbox, "bright_green");
-$teal: map-get($gruvbox, "faded_aqua");
-$cyan: map-get($gruvbox, "bright_aqua");
-
-// $primary: $blue;
-$secondary: $gray-400;
-// $success: $green;
-// $info: $cyan;
-// $warning: $yellow;
-// $danger: $red;
-// $light: $gray-100;
-// $dark: $gray-900;
-
-//
 // Fonts
-//
+// Imports
+@import url("https://fonts.googleapis.com/css2?family=Borel&display=swap");
+// Actual Fonts
+$font-logo: "Borel", sans-serif;
+$font-link: "LinkFont", sans-serif;
+$font-text: "TextFont", sans-serif;
 
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap");
+// Font Sizes
+$font-si-logo: 1.2rem;
+$font-si-link: 1rem;
+$font-si-detail: 0.875rem;
+$font-si-price: 1.25rem;
+$font-si-tag: 0.75rem;
 
-$font-family-sans-serif: Oswald, system-ui, -apple-system, "Segoe UI", Roboto,
-  "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+// Z-Index
+$zind-1: 1050;
+$zind-2: 1040;
+$zind-3: 1030;
+$zind-4: 1020;
+$zind-5: 1010;
+
+// Rounded Corners
+$border-radius: 0.25rem;

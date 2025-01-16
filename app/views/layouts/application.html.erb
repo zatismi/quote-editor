@@ -5,36 +5,33 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-
     <meta name="turbo-prefetch" content="false">
-
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
-
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%# <%= stylesheet_link_tag "xxx.css", "data-turbo-track": "reload" %>
+    <!-- Conditionally load the white theme for shop.html.erb (line_items_controller) -->
+    <%# <% if controller_name == 'line_items' %>
+    <%# <%= stylesheet_link_tag 'white_theme', "data-turbo-track": "reload" %>
+    <%# <% else %>
+    <%# <%= stylesheet_link_tag 'application', "data-turbo-track": "reload" %>
+    <%# <% end %>
   </head>
-
   <body data-controller="color-theme">
     <%= render "layouts/navbar" %>
     <%= turbo_frame_tag "flash" do %>
       <%= render "layouts/flash" %>
     <% end %>
-
     <div id="flash">
     </div>
-
     <%= yield %>
   </body>
 </html>

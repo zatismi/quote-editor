@@ -1,0 +1,27 @@
+body {
+  font-family: $font-text;
+}
+
+.logo {
+  font-family: $font-logo;
+  font-size: $font-si-logo;
+}
+
+a {
+  font-family: $font-link;
+  font-size: $font-si-link;
+}
+
+.detail {
+  font-size: $font-si-detail;
+  color: $text-secondary;
+}
+
+.price {
+  font-size: $font-si-price;
+  color: $text-dark;
+}
+
+.tag {
+  font-size: $font-si-tag;
+}

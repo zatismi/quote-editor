@@ -18,3 +18,70 @@
     text-decoration: none;
   }
 }
+
+::selection {
+  background-color: rgb(213, 136, 255);
+  color: white;  // Optional: change text color while selected
+}
+
+.tagi {
+  font-size: 0.75rem; // smaller font size
+
+  &-i {
+    font-size: 0.75rem; // smaller font size
+    font-weight: bold; // bold text
+  }
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: darkcyan;
+    text-decoration: underline;
+  }
+}
+
+.product-link {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    background-color: transparent;
+    filter: brightness(95%) sepia(10%) hue-rotate(90deg) saturate(300%);
+    text-decoration: none;
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Links
+a {
+  text-decoration: none;
+  color: $secondary;
+
+  &:hover {
+    color: darkcyan;
+    text-decoration: underline;
+  }
+}
+
+// Buttons
+.btn {
+  border-radius: $border-radius;
+
+  &-add,
+  &-checkout,
+  &-minus,
+  &-plus,
+  &-keepshopping,
+  &-remove,
+  &-cancel,
+  &-pay {
+    background-color: $secondary;
+    color: $primary;
+
+    &:hover {
+      background-color: darkcyan;
+      color: $primary;
+    }
+  }
+}
